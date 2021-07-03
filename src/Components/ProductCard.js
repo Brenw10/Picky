@@ -1,17 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground, Image } from 'react-native';
-import moment from 'moment';
+import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 
-export default function ({ title, image, price, validity, width, height }) {
+export default function ({ product, width, height }) {
   return (
     <View style={{ ...styles.container, width, height }}>
-      <View style={styles.leftContainer}>
-        <Image source={image} style={styles.image} />
-      </View>
-      <View style={styles.rightContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text>{moment(validity).format('DD/MM/YYYY')}</Text>
-        <Text>{price}</Text>
+      <ImageBackground source={product.image} style={styles.image} resizeMode='contain'>
+        <View style={{ ...styles.priceContainer, ...styles.rounded }}>
+          <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
+        </View>
+      </ImageBackground>
+      <View style={styles.detailContainer}>
+        <Text style={styles.title}>{product.name}</Text>
       </View>
     </View>
   );
@@ -19,25 +18,39 @@ export default function ({ title, image, price, validity, width, height }) {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 5,
-    backgroundColor: '#FFF',
-    flexDirection: 'row',
+    elevation: 2,
     margin: 5,
-    borderRadius: 2,
+    borderWidth: 0.1,
   },
   image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'center',
+    flex: 0.85,
+    justifyContent: 'flex-end',
+    backgroundColor: '#FFF',
   },
-  leftContainer: {
-    flex: 0.5,
+  priceContainer: {
+    backgroundColor: '#FFF',
+    margin: 5,
+    alignSelf: 'flex-end',
   },
-  rightContainer: {
-    flex: 0.5,
-    padding: 10,
+  price: {
+    fontSize: 13,
+  },
+  detailContainer: {
+    flex: 0.15,
+    backgroundColor: '#888',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
+    color: '#FFF',
+    fontSize: 13,
     fontWeight: 'bold',
+  },
+  rounded: {
+    borderRadius: 100,
+    paddingVertical: 2,
+    paddingHorizontal: 12,
+    elevation: 2,
+    borderWidth: 0.05,
   },
 });
