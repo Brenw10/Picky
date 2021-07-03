@@ -60,3 +60,4 @@ buck-out/
 
 # Custom
 yarn.lock
+*.hprof
