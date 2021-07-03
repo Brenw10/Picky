@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.1,
   },
   image: {
-    flex: 0.85,
+    flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: '#FFF',
   },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Light',
   },
   detailContainer: {
-    flex: 0.15,
+    paddingVertical: 10,
     backgroundColor: 'rgba(22, 35, 40, 0.7)',
     alignItems: 'center',
     justifyContent: 'center',
