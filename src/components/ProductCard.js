@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 13,
+    fontFamily: 'AirbnbCereal-Light',
   },
   detailContainer: {
     flex: 0.15,
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFF',
     fontSize: 13,
-    fontWeight: 'bold',
+    fontFamily: 'AirbnbCereal-Book',
   },
   rounded: {
     borderRadius: 100,

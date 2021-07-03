@@ -19,15 +19,16 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   description: {
-    color: '#AAA',
-    fontWeight: 'bold',
+    color: '#333',
     margin: 20,
     marginBottom: 0,
+    fontFamily: 'Poppins-Thin',
   },
   title: {
-    fontWeight: 'bold',
     margin: 20,
     marginTop: 0,
     fontSize: 25,
+    color: '#4a4a4a',
+    fontFamily: 'AirbnbCereal-Medium',
   },
 });
