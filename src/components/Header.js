@@ -2,11 +2,11 @@ import moment from 'moment';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function () {
+export default function ({ title }) {
   return (
     <View style={styles.container}>
       <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 }
