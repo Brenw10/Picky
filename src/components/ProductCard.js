@@ -18,7 +18,7 @@ export default function ({ product, width, height }) {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 2,
+    elevation: 1,
     margin: 5,
     borderWidth: 0.1,
   },
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 13,
-    fontFamily: 'AirbnbCereal-Light',
+    fontFamily: 'OpenSans-Light',
   },
   detailContainer: {
     flex: 0.15,
-    backgroundColor: '#888',
+    backgroundColor: 'rgba(22, 35, 40, 0.7)',
     alignItems: 'center',
     justifyContent: 'center',
   },
