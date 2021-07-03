@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import ProductCard from '../Components/ProductCard';
-import Header from '../Components/Header';
+import ProductCard from '../components/ProductCard';
+import Header from '../components/Header';
 
 export default function () {
   return (
@@ -14,7 +14,7 @@ export default function () {
           product={{
             name: 'Leite Moça',
             price: 3.59,
-            image: require('../Assets/Images/item.jpg')
+            image: require('../assets/images/item.jpg')
           }}
           width={150} height={250}
         />
@@ -22,7 +22,7 @@ export default function () {
           product={{
             name: 'Leite Semidesnatado',
             price: 1.59,
-            image: require('../Assets/Images/item2.jpg')
+            image: require('../assets/images/item2.jpg')
           }}
           width={150} height={250}
         />
@@ -30,7 +30,7 @@ export default function () {
           product={{
             name: 'Nescau',
             price: 5.59,
-            image: require('../Assets/Images/item3.jpg')
+            image: require('../assets/images/item3.jpg')
           }}
           width={150} height={250}
         />
@@ -38,7 +38,7 @@ export default function () {
           product={{
             name: 'Omo Lavagem',
             price: 4.00,
-            image: require('../Assets/Images/item4.jpg')
+            image: require('../assets/images/item4.jpg')
           }}
           width={150} height={250}
         />

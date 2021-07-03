@@ -1,7 +1,7 @@
 import React from 'react';
-import Navigator from './src/Navigation/Navigator';
+import Navigator from './src/navigation/Navigator';
 import { Provider as PaperProvider } from 'react-native-paper';
-import './src/Config/Moment';
+import './src/config/Moment';
 
 export default function () {
   return (
