@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import CategoryCard from '../components/CategoryCard';
 import Header from '../components/Header';
 import Category from '../endpoints/Category';
@@ -19,12 +19,23 @@ export default function () {
 
   return (
     <>
-      <Header title='Pagina Inicial' />
-      <View style={{ backgroundColor: '#EEE', flex: 1, }}>
-        <ScrollView horizontal={true} style={{ flexDirection: 'row' }}>
+      <Header title='Página Inicial' />
+      <ScrollView style={styles.container}>
+        <ScrollView horizontal={true} style={styles.categoryContainer}>
           {renderCategories()}
         </ScrollView>
-      </View>
+      </ScrollView>
     </>
   );
 }
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#EEE',
+  },
+  categoryContainer: {
+    marginVertical: 10,
+  },
+});

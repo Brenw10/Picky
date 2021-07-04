@@ -14,9 +14,8 @@ export default function ({ title }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
-    borderBottomColor: '#f5f4f8',
-    borderBottomWidth: 0.03,
-    elevation: 3,
+    borderBottomColor: '#000',
+    borderBottomWidth: 0.2,
   },
   description: {
     color: '#333',
