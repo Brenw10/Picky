@@ -24,7 +24,7 @@ export default function () {
 
   function renderShopProducts() {
     return shopProducts.map(product =>
-      <ProductCard key={product._id} product={product} width={150} height={250} />
+      <ProductCard key={product._id} product={product} width={150} height={200} />
     );
   }
 
