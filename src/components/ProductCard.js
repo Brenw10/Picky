@@ -20,7 +20,7 @@ export default function ({ product, width, height, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 5,
+    marginHorizontal: 5,
     borderWidth: 0.1,
   },
   image: {
