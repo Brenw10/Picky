@@ -1,17 +1,19 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function ({ category, width, height }) {
+export default function ({ category, width, height, onPress }) {
   return (
-    <View style={{ ...styles.container, width, height }}>
-      <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
-        <Image
-          source={category.image}
-          style={styles.image}
-          resizeMode='contain' />
+    <TouchableOpacity onPress={onPress}>
+      <View style={{ ...styles.container, width, height }}>
+        <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
+          <Image
+            source={category.image}
+            style={styles.image}
+            resizeMode='contain' />
+        </View>
+        <Text style={styles.title}>{category.name}</Text>
       </View>
-      <Text style={styles.title}>{category.name}</Text>
-    </View >
+    </TouchableOpacity >
   );
 }
 
