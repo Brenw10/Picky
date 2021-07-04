@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderBottomColor: '#000',
     borderBottomWidth: 0.2,
+    elevation: 2,
   },
   description: {
     color: '#333',
