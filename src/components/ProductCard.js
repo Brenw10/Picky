@@ -18,7 +18,6 @@ export default function ({ product, width, height }) {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 1,
     margin: 5,
     borderWidth: 0.1,
   },
@@ -51,7 +50,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     paddingVertical: 2,
     paddingHorizontal: 12,
-    elevation: 2,
     borderWidth: 0.05,
   },
 });
