@@ -21,7 +21,7 @@ export default function ({ category, width, height, onPress }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    margin: 5,
+    marginHorizontal: 5,
   },
   imageContainer: {
     flex: 1,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   title: {
-    marginVertical: 5,
+    marginTop: 5,
     fontFamily: 'AirbnbCereal-Light',
     fontSize: 12,
   },

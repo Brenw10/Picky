@@ -4,18 +4,17 @@ import Icon from 'react-native-vector-icons/Entypo';
 
 export default function ({ children }) {
   return (
-    <>
-      <View style={styles.container}>
-        <Text style={styles.text}>{children}</Text>
-        <Icon name="chevron-thin-right" size={10} color="#444" />
-      </View>
-    </>
+    <View style={styles.container}>
+      <Text style={styles.text}>{children}</Text>
+      <Icon name="chevron-thin-right" size={10} color="#444" />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
     flexDirection: 'row',
     alignItems: 'center',
   },
