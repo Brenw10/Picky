@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   price: {
-    fontSize: 13,
-    fontFamily: 'OpenSans-Light',
+    fontSize: 14,
+    fontFamily: 'OpenSans-Regular',
   },
   detailContainer: {
     paddingVertical: 10,
