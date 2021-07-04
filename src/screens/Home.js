@@ -6,6 +6,7 @@ import SectionSubtitle from '../components/SectionSubtitle';
 import ProductCard from '../components/ProductCard';
 import Category from '../endpoints/Category';
 import ShopProduct from '../endpoints/ShopProduct';
+import SectionTitle from '../components/SectionTitle';
 
 export default function () {
   const [categories, setCategories] = useState([]);
@@ -28,6 +29,12 @@ export default function () {
     );
   }
 
+  function renderShopProductsMockup() {
+    return [...shopProducts].reverse().map(product =>
+      <ProductCard key={product._id} product={product} width={150} height={200} />
+    );
+  }
+
   return (
     <>
       <Header title='Página Inicial' />
@@ -38,10 +45,30 @@ export default function () {
             {renderCategories()}
           </ScrollView>
         </View>
-        <View style={styles.categoryContainer}>
+
+        <SectionTitle>LOJAS</SectionTitle>
+        <View style={{ ...styles.productContainer, marginTop: 0 }}>
           <SectionSubtitle>Comercial Esperança, Centro</SectionSubtitle>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {renderShopProducts()}
+          </ScrollView>
+        </View>
+        <View style={styles.productContainer}>
+          <SectionSubtitle>Extra, Centro</SectionSubtitle>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {renderShopProductsMockup()}
+          </ScrollView>
+        </View>
+        <View style={styles.productContainer}>
+          <SectionSubtitle>Piratininga, Jardim Paulista</SectionSubtitle>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {renderShopProducts()}
+          </ScrollView>
+        </View>
+        <View style={styles.productContainer}>
+          <SectionSubtitle>Sonda, Jardim Paulista</SectionSubtitle>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {renderShopProductsMockup()}
           </ScrollView>
         </View>
       </ScrollView>
@@ -49,13 +76,14 @@ export default function () {
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#EEE',
   },
   categoryContainer: {
+    marginTop: 10,
+  },
+  productContainer: {
     marginVertical: 15,
   },
 });
