@@ -34,12 +34,6 @@ export default function () {
     );
   }
 
-  function renderShopProductsMockup() {
-    return [...shopProducts].reverse().map(product =>
-      <ProductCard key={product._id} product={product} width={150} height={200} />
-    );
-  }
-
   return (
     <>
       <Header title='Página Inicial'>
@@ -59,30 +53,11 @@ export default function () {
         </View>
 
         <SectionTitle>LOJAS</SectionTitle>
-        <View style={{ ...styles.productContainer, marginTop: 0 }}>
-          <SectionSubtitle>Comercial Esperança, Centro</SectionSubtitle>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {renderShopProducts()}
-          </ScrollView>
-        </View>
-        <View style={styles.productContainer}>
-          <SectionSubtitle>Extra, Centro</SectionSubtitle>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {renderShopProductsMockup()}
-          </ScrollView>
-        </View>
-        <View style={styles.productContainer}>
-          <SectionSubtitle>Piratininga, Jardim Paulista</SectionSubtitle>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {renderShopProducts()}
-          </ScrollView>
-        </View>
-        <View style={styles.productContainer}>
-          <SectionSubtitle>Sonda, Jardim Paulista</SectionSubtitle>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {renderShopProductsMockup()}
-          </ScrollView>
-        </View>
+        
+        <SectionSubtitle>Comercial Esperança, Centro</SectionSubtitle>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {renderShopProducts()}
+        </ScrollView>
       </ScrollView>
     </>
   );
@@ -94,8 +69,5 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     marginTop: 10,
-  },
-  productContainer: {
-    marginVertical: 15,
   },
 });
