@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
-import { Button, Menu } from 'react-native-paper';
+import { Menu } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function ({ categories, setCategory, category }) {
   const [visible, setVisible] = useState(false);
@@ -32,7 +33,8 @@ export default function ({ categories, setCategory, category }) {
         <View style={{ ...styles.imageContainer, ...styles.selectedImageContainer, backgroundColor: category.color }}>
           <Image source={category.image} style={styles.image} resizeMode='contain' />
         </View>
-        <Text style={styles.itemText}>{category.name}</Text>
+        <Text style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name.toUpperCase()}</Text>
+        <Icon name="chevron-down" size={17} color="#444" />
       </TouchableOpacity>
     );
   }
@@ -72,5 +74,8 @@ const styles = StyleSheet.create({
   },
   selectedImageContainer: {
     elevation: 0,
+  },
+  selectedItemText: {
+    marginRight: 10,
   },
 });
