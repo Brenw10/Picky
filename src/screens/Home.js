@@ -51,13 +51,11 @@ export default function ({ navigation }) {
           text={city ? city.name : 'Cidades'} />
       </Header>
 
-      <ScrollView style={styles.container}>
-        <View style={styles.categoryContainer}>
-          <SectionSubtitle>Categorias</SectionSubtitle>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {renderCategories()}
-          </ScrollView>
-        </View>
+      <ScrollView>
+        <SectionSubtitle containerStyle={styles.subtitle}>Categorias</SectionSubtitle>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {renderCategories()}
+        </ScrollView>
 
         <SectionTitle>LOJAS</SectionTitle>
 
@@ -71,10 +69,7 @@ export default function ({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#EEE',
-  },
-  categoryContainer: {
-    marginTop: 10,
+  subtitle: {
+    marginTop: 10
   },
 });
