@@ -31,7 +31,7 @@ export default function ({ categories, setCategory, category }) {
         style={{ ...styles.item, ...styles.selectedItem }}
         onPress={() => setVisible(true)}>
         <View style={{ ...styles.imageContainer, ...styles.selectedImageContainer, backgroundColor: category.color }}>
-          <Image source={category.image} style={styles.selectedImage} resizeMode='contain' />
+          <Image source={category.image} style={styles.image} resizeMode='contain' />
         </View>
         <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name}</Text>
         <Icon name="chevron-down" size={17} color="#444" />
@@ -71,18 +71,14 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   image: {
-    width: 35,
-    height: 35,
+    width: 30,
+    height: 30,
   },
   selectedImageContainer: {
     elevation: 0,
   },
   selectedItem: {
     justifyContent: 'center',
-  },
-  selectedImage: {
-    width: 25,
-    height: 25,
   },
   selectedItemText: {
     marginRight: 5,
