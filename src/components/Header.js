@@ -2,19 +2,19 @@ import moment from 'moment';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function ({ title, children }) {
+export default function ({ title, children, rowReverse }) {
 
   function renderChildren() {
     return (
-      <View style={styles.rightContainer}>
+      <View style={{ ...styles.rightContainer, alignItems: rowReverse ? 'flex-start' : 'flex-end' }}>
         {children}
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.leftContainer}>
+    <View style={{ ...styles.container, flexDirection: rowReverse ? 'row-reverse' : 'row' }}>
+      <View style={{ ...styles.leftContainer, alignItems: rowReverse ? 'flex-end' : 'flex-start' }}>
         <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
         <Text style={styles.title}>{title}</Text>
       </View>
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#000',
     borderBottomWidth: 0.2,
     elevation: 2,
-    flexDirection: 'row',
     padding: 20,
   },
   description: {
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     flex: 1,
-    alignItems: 'flex-end',
     justifyContent: 'center',
   },
 });
