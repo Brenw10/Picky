@@ -28,12 +28,12 @@ export default function ({ categories, setCategory, category }) {
   function renderButton() {
     return (
       <TouchableOpacity
-        style={styles.item}
+        style={{ ...styles.item, ...styles.selectedItem }}
         onPress={() => setVisible(true)}>
         <View style={{ ...styles.imageContainer, ...styles.selectedImageContainer, backgroundColor: category.color }}>
           <Image source={category.image} style={styles.image} resizeMode='contain' />
         </View>
-        <Text style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name.toUpperCase()}</Text>
+        <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name.toUpperCase()}</Text>
         <Icon name="chevron-down" size={17} color="#444" />
       </TouchableOpacity>
     );
@@ -54,12 +54,14 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   itemText: {
     fontFamily: 'AirbnbCereal-Light',
     fontSize: 15,
     marginLeft: 10,
     marginRight: 30,
+    color: '#666',
   },
   imageContainer: {
     padding: 5,
@@ -75,7 +77,10 @@ const styles = StyleSheet.create({
   selectedImageContainer: {
     elevation: 0,
   },
+  selectedItem: {
+    justifyContent: 'center',
+  },
   selectedItemText: {
-    marginRight: 10,
+    marginRight: 5,
   },
 });
