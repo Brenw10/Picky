@@ -9,6 +9,7 @@ import City from '../endpoints/City';
 import ShopProduct from '../endpoints/ShopProduct';
 import SectionTitle from '../components/SectionTitle';
 import Menu from '../components/Menu';
+import { Searchbar } from 'react-native-paper';
 
 export default function ({ navigation }) {
   const [categories, setCategories] = useState([]);
@@ -52,7 +53,12 @@ export default function ({ navigation }) {
       </Header>
 
       <ScrollView>
-        <SectionSubtitle containerStyle={styles.subtitle}>Categorias</SectionSubtitle>
+        <Searchbar
+          style={styles.search}
+          placeholder='Buscar Lojas'
+        />
+
+        <SectionSubtitle>Categorias</SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {renderCategories()}
         </ScrollView>
@@ -69,7 +75,7 @@ export default function ({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  subtitle: {
-    marginTop: 10
+  search: {
+    margin: 10,
   },
 });
