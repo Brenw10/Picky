@@ -22,7 +22,7 @@ export default function ({ title, children, navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, paddingLeft: navigation ? 10 : 20 }}>
       {navigation && renderBackButton()}
       <View style={styles.leftContainer}>
         <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#000',
     borderBottomWidth: 0.2,
     elevation: 2,
-    padding: 15,
+    padding: 20,
     flexDirection: 'row',
     justifyContent: 'center',
   },
