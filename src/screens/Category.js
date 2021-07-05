@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Header from '../components/Header';
-import City from '../endpoints/City';
-import Menu from '../components/Menu';
+import Category from '../endpoints/Category';
+import CategorySelector from '../components/CategorySelector';
 
 export default function ({ route, navigation }) {
-  const [cities, setCities] = useState([]);
-  const [city, setCity] = useState();
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState(route.params.category);
 
   useEffect(() => {
-    City.getAll().then(result => setCities(result));
+    Category.getAll().then(result => setCategories(result));
   }, []);
 
   return (
     <>
-      <Header title={route.params.category.name} navigation={navigation}>
+      <Header title={category.name} navigation={navigation}>
+        <CategorySelector
+          categories={categories}
+          setCategory={setCategory}
+          category={category}
+        />
       </Header>
     </>
   );
