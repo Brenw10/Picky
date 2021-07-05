@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 5,
     borderWidth: 0.1,
+    flex: 1,
   },
   image: {
     flex: 1,
