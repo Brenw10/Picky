@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import Header from '../components/Header';
 import Category from '../endpoints/Category';
 import CategorySelector from '../components/CategorySelector';
@@ -7,6 +7,8 @@ import ShopProduct from '../endpoints/ShopProduct';
 import ProductCard from '../components/ProductCard';
 import SectionSubtitle from '../components/SectionSubtitle';
 import { Searchbar } from 'react-native-paper';
+
+const COLUMNS = 3;
 
 export default function ({ route, navigation }) {
   const [categories, setCategories] = useState([]);
@@ -18,12 +20,11 @@ export default function ({ route, navigation }) {
     ShopProduct.get().then(result => setShopProducts(result));
   }, []);
 
-  function renderShopProducts() {
-    return shopProducts.map(product =>
-      <ProductCard
-        key={product._id}
-        product={product}
-        width={150} height={200} />
+  function renderShopProducts({ item }) {
+    return (
+      <View style={styles.row}>
+        <ProductCard product={item} height={180} />
+      </View>
     );
   }
 
@@ -37,17 +38,21 @@ export default function ({ route, navigation }) {
         />
       </Header>
 
-      <ScrollView>
-        <Searchbar
-          style={styles.search}
-          placeholder='Buscar Produtos'
-        />
-
-        <SectionSubtitle>Comercial Esperança, Centro</SectionSubtitle>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {renderShopProducts()}
-        </ScrollView>
-      </ScrollView>
+      <FlatList
+        data={shopProducts}
+        renderItem={renderShopProducts}
+        numColumns={COLUMNS}
+        keyExtractor={item => item._id}
+        ListHeaderComponent={
+          <>
+            <Searchbar
+              style={styles.search}
+              placeholder='Buscar Produtos'
+            />
+            <SectionSubtitle>Produtos</SectionSubtitle>
+          </>
+        }
+      />
     </>
   );
 }
@@ -55,5 +60,9 @@ export default function ({ route, navigation }) {
 const styles = StyleSheet.create({
   search: {
     margin: 10,
+  },
+  row: {
+    flex: 1 / COLUMNS,
+    marginBottom: 10,
   },
 });
