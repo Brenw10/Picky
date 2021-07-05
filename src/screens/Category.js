@@ -14,7 +14,7 @@ export default function ({ route, navigation }) {
 
   return (
     <>
-      <Header title={category.name} navigation={navigation}>
+      <Header title='Categorias' navigation={navigation}>
         <CategorySelector
           categories={categories}
           setCategory={setCategory}
