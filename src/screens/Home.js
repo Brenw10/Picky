@@ -10,7 +10,7 @@ import ShopProduct from '../endpoints/ShopProduct';
 import SectionTitle from '../components/SectionTitle';
 import Menu from '../components/Menu';
 
-export default function () {
+export default function ({ navigation }) {
   const [categories, setCategories] = useState([]);
   const [shopProducts, setShopProducts] = useState([]);
   const [cities, setCities] = useState([]);
@@ -24,13 +24,20 @@ export default function () {
 
   function renderCategories() {
     return categories.map(category =>
-      <CategoryCard key={category._id} category={category} width={100} height={100} />
+      <CategoryCard
+        key={category._id}
+        category={category}
+        onPress={() => navigation.navigate('Category', { category })}
+        width={100} height={100} />
     );
   }
 
   function renderShopProducts() {
     return shopProducts.map(product =>
-      <ProductCard key={product._id} product={product} width={150} height={200} />
+      <ProductCard
+        key={product._id}
+        product={product}
+        width={150} height={200} />
     );
   }
 
@@ -53,7 +60,7 @@ export default function () {
         </View>
 
         <SectionTitle>LOJAS</SectionTitle>
-        
+
         <SectionSubtitle>Comercial Esperança, Centro</SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {renderShopProducts()}
