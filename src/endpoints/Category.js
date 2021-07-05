@@ -55,7 +55,7 @@ function getAll() {
         color: '#34825c',
         image: require('../assets/images/rice.png')
       }
-    ]
+    ].sort((a, b) => a.name.localeCompare(b.name))
   );
 }
 

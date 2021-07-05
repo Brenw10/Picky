@@ -9,7 +9,7 @@ function getAll() {
         _id: 2,
         name: 'Mogi das Cruzes',
       },
-    ]
+    ].sort((a, b) => a.name.localeCompare(b.name))
   );
 }
 
