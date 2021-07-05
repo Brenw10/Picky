@@ -5,16 +5,21 @@ import Header from '../components/Header';
 import SectionSubtitle from '../components/SectionSubtitle';
 import ProductCard from '../components/ProductCard';
 import Category from '../endpoints/Category';
+import City from '../endpoints/City';
 import ShopProduct from '../endpoints/ShopProduct';
 import SectionTitle from '../components/SectionTitle';
+import Menu from '../components/Menu';
 
 export default function () {
   const [categories, setCategories] = useState([]);
   const [shopProducts, setShopProducts] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [city, setCity] = useState();
 
   useEffect(() => {
     Category.getAll().then(result => setCategories(result));
     ShopProduct.get().then(result => setShopProducts(result));
+    City.getAll().then(result => setCities(result));
   }, []);
 
   function renderCategories() {
@@ -37,7 +42,14 @@ export default function () {
 
   return (
     <>
-      <Header title='Página Inicial' />
+      <Header title='Página Inicial'>
+        <Menu
+          items={cities}
+          setSelected={setCity}
+          displayField='name'
+          text={city ? city.name : 'Cidades'} />
+      </Header>
+
       <ScrollView style={styles.container}>
         <View style={styles.categoryContainer}>
           <SectionSubtitle>Categorias</SectionSubtitle>
