@@ -3,16 +3,14 @@ import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react
 
 export default function ({ product, width, height, onPress }) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={{ ...styles.container, width, height }}>
-        <ImageBackground source={product.image} style={styles.image} resizeMode='contain'>
-          <View style={{ ...styles.priceContainer, ...styles.rounded }}>
-            <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
-          </View>
-        </ImageBackground>
-        <View style={styles.detailContainer}>
-          <Text style={styles.title}>{product.name}</Text>
+    <TouchableOpacity style={{ ...styles.container, width, height }} onPress={onPress}>
+      <ImageBackground source={product.image} style={styles.image} resizeMode='contain'>
+        <View style={{ ...styles.priceContainer, ...styles.rounded }}>
+          <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
         </View>
+      </ImageBackground>
+      <View style={styles.detailContainer}>
+        <Text style={styles.title}>{product.name}</Text>
       </View>
     </TouchableOpacity>
   );
