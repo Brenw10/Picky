@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     color: '#4a4a4a',
-    fontFamily: 'AirbnbCereal-Medium',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Medium' : 'AirbnbCereal-Medium',
     alignSelf: 'center',
     marginBottom: 5,
   },
   description: {
     color: '#4a4a4a',
-    fontFamily: 'AirbnbCereal-Light',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Light' : 'AirbnbCereal-Light',
     alignSelf: 'center',
     marginBottom: 5,
   },

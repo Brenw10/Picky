@@ -46,9 +46,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
   },
   buttonText: {
-    fontFamily: 'AirbnbCereal-Light',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Light' : 'AirbnbCereal-Light',
   },
   item: {
-    fontFamily: 'AirbnbCereal-Light',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Light' : 'AirbnbCereal-Light',
   },
 });

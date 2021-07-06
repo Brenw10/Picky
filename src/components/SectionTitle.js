@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontFamily: 'AirbnbCereal-Bold',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Bold' : 'AirbnbCereal-Bold',
     marginRight: 2,
     color: '#555',
     marginBottom: 5,

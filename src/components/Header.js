@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     color: '#4a4a4a',
-    fontFamily: 'AirbnbCereal-Medium',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Medium' : 'AirbnbCereal-Medium',
   },
   leftContainer: {
     flex: 1,

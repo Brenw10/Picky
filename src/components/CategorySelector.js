@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   itemText: {
-    fontFamily: 'AirbnbCereal-Light',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Light' : 'AirbnbCereal-Light',
     fontSize: 15,
     marginLeft: 10,
     marginRight: 30,
