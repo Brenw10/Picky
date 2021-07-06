@@ -48,11 +48,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   description: {
+    fontSize: 13,
     color: '#333',
     fontFamily: 'Poppins-Thin',
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#4a4a4a',
     fontFamily: 'AirbnbCereal-Medium',
   },
