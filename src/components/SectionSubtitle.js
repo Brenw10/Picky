@@ -14,7 +14,7 @@ export default function ({ children, containerStyle }) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
-    marginVertical: 5,
+    marginTop: 5,
     flexDirection: 'row',
     alignItems: 'center',
   },
