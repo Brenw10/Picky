@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.1,
     flex: 1,
     backgroundColor: '#FFF',
-    borderWidth: 0.2,
+    borderBottomWidth: 0.2,
     borderColor: '#AAA',
   },
   image: {
