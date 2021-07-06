@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Card, Paragraph } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import GoogleMaps from '../services/GoogleMaps';
 
 export default function ({ shop, containerStyle }) {
@@ -10,8 +10,7 @@ export default function ({ shop, containerStyle }) {
       <Text style={styles.description}>
         {shop.street + ', ' + shop.number} - {shop.district + ' - ' + shop.city}
       </Text>
-      <Button icon='map'
-        onPress={() => GoogleMaps.search(`${shop.street},${shop.number}`)}>
+      <Button icon='map' onPress={() => GoogleMaps.search(`${shop.street},${shop.number}`)}>
         Abrir no Google Maps
       </Button>
     </View>

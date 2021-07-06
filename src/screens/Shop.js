@@ -6,6 +6,8 @@ import ProductCard from '../components/ProductCard';
 import SectionTitle from '../components/SectionTitle';
 import { Searchbar } from 'react-native-paper';
 import ShopInformation from '../components/ShopInformation';
+import GoogleMaps from '../services/GoogleMaps';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const COLUMNS = 3;
 
@@ -43,7 +45,13 @@ export default function ({ route, navigation }) {
 
   return (
     <>
-      <Header title='Loja' navigation={navigation} />
+      <Header title='Loja' navigation={navigation}>
+        <Icon.Button name="map-o" backgroundColor='rgba(0,0,0,0)' color='#4a4a4a'
+          underlayColor="transparent"
+          onPress={() => GoogleMaps.search(`${shop.street},${shop.number}`)}>
+          Google Maps
+        </Icon.Button>
+      </Header>
 
       <FlatList
         data={shopProducts}
