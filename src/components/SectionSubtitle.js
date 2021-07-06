@@ -1,13 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
-export default function ({ children, containerStyle }) {
+export default function ({ children, containerStyle, onPress }) {
   return (
-    <View style={{ ...styles.container, ...containerStyle }}>
+    <TouchableOpacity
+      style={{ ...styles.container, ...containerStyle }}
+      onPress={onPress}
+      disabled={!onPress}>
       <Text style={styles.text}>{children}</Text>
       <Icon name="chevron-thin-right" size={10} color="#444" />
-    </View>
+    </TouchableOpacity>
   );
 }
 
