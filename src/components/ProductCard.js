@@ -18,14 +18,16 @@ export default function ({ product, width, height, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 5,
+    margin: 5,
     borderWidth: 0.1,
     flex: 1,
+    backgroundColor: '#FFF',
+    borderWidth: 0.2,
+    borderColor: '#AAA',
   },
   image: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: '#FFF',
   },
   priceContainer: {
     backgroundColor: '#FFF',
@@ -38,12 +40,10 @@ const styles = StyleSheet.create({
   },
   detailContainer: {
     paddingVertical: 10,
-    backgroundColor: 'rgba(22, 35, 40, 0.7)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    color: '#FFF',
     fontSize: 13,
     fontFamily: 'AirbnbCereal-Book',
   },
