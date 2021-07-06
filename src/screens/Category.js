@@ -23,7 +23,9 @@ export default function ({ route, navigation }) {
   function renderShopProducts({ item }) {
     return (
       <View style={styles.row}>
-        <ProductCard product={item} height={180} />
+        <ProductCard
+          onPress={() => navigation.navigate('Shop', { shop: item.shop, search: item.name })}
+          product={item} height={180} />
       </View>
     );
   }
@@ -67,6 +69,6 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1 / COLUMNS,
-    marginBottom: 10,
+    marginBottom: 5,
   },
 });
