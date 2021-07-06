@@ -66,6 +66,9 @@ const styles = StyleSheet.create({
   },
   search: {
     margin: 10,
+    elevation: 0,
+    borderBottomWidth: 0.2,
+    borderBottomColor: '#AAA',
   },
   row: {
     flex: 1 / COLUMNS,
