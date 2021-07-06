@@ -36,12 +36,14 @@ export default function ({ navigation }) {
     );
   }
 
-  function renderShopProducts() {
+  function renderShopProducts(shop) {
     return shopProducts.map(product =>
       <ProductCard
         key={product._id}
         product={product}
-        width={150} height={200} />
+        width={150} height={200}
+        onPress={() => navigation.navigate('Shop', { shop, search: product.name })}
+      />
     );
   }
 
@@ -53,7 +55,7 @@ export default function ({ navigation }) {
           {shop.name}, {shop.district}
         </SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {renderShopProducts()}
+          {renderShopProducts(shop)}
         </ScrollView>
       </View>
     );

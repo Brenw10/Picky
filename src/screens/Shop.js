@@ -11,6 +11,7 @@ const COLUMNS = 3;
 export default function ({ route, navigation }) {
   const [shop, setShop] = useState(route.params.shop);
   const [shopProducts, setShopProducts] = useState([]);
+  const [search, setSearch] = useState(route.params.search);
 
   useEffect(() => {
     ShopProduct.get().then(result => setShopProducts(result));
@@ -39,6 +40,8 @@ export default function ({ route, navigation }) {
             <Searchbar
               style={styles.search}
               placeholder='Buscar Produtos'
+              onChangeText={setSearch}
+              value={search}
             />
             <SectionSubtitle>Produtos</SectionSubtitle>
           </>
