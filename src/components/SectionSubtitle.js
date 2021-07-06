@@ -3,11 +3,15 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
 export default function ({ children, containerStyle, onPress }) {
+  function renderLink() {
+    return <Icon name="link" size={13} color="#444" style={styles.link} />;
+  }
   return (
     <TouchableOpacity
       style={{ ...styles.container, ...containerStyle }}
       onPress={onPress}
       disabled={!onPress}>
+      {onPress && renderLink()}
       <Text style={styles.text}>{children}</Text>
       <Icon name="chevron-thin-right" size={10} color="#444" />
     </TouchableOpacity>
@@ -21,7 +25,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  link: {
+    marginRight: 2,
+  },
   text: {
+    fontSize: 13,
     fontFamily: 'AirbnbCereal-Light',
     marginRight: 2,
   },
