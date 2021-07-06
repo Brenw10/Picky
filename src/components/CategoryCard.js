@@ -21,7 +21,7 @@ export default function ({ category, width, height, onPress }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginHorizontal: 5,
+    margin: 5,
   },
   imageContainer: {
     flex: 1,
