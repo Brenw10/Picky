@@ -6,7 +6,7 @@ export default function ({ product, width, height, onPress }) {
     <TouchableOpacity style={{ ...styles.container, width, height }}
       onPress={onPress} disabled={!onPress}>
       <ImageBackground source={product.image} style={styles.image} resizeMode='contain'>
-        <View style={{ ...styles.priceContainer, ...styles.rounded }}>
+        <View style={styles.priceContainer}>
           <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
         </View>
       </ImageBackground>
@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
   priceContainer: {
     backgroundColor: '#FFF',
     margin: 5,
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
+    paddingVertical: 2,
+    paddingHorizontal: 10,
   },
   price: {
     fontSize: 14,
@@ -47,11 +49,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 13,
     fontFamily: 'AirbnbCereal-Book',
-  },
-  rounded: {
-    borderRadius: 100,
-    paddingVertical: 2,
-    paddingHorizontal: 12,
-    borderWidth: 0.05,
   },
 });
