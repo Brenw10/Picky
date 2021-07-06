@@ -1,0 +1,1 @@
+export const GOOGLE_MAPS_SEARCH = 'https://www.google.com/maps/place/';
