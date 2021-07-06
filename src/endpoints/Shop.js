@@ -7,6 +7,7 @@ function get() {
         district: 'Centro',
         street: 'Av. Dr. Nelson d Ávila',
         number: 29,
+        city: 'São José dos Campos',
       },
       {
         _id: 2,
@@ -14,6 +15,7 @@ function get() {
         district: 'Centro',
         street: 'Av. Dr. Nelson d Ávila',
         number: 29,
+        city: 'São José dos Campos',
       },
     ].sort((a, b) => a.name.localeCompare(b.name))
   );
