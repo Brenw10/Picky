@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     elevation: 1,
+    borderWidth: 0.2,
+    borderColor: '#DDD',
+    borderRadius: 5,
   },
   image: {
     flex: 1,
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
   priceContainer: {
     backgroundColor: '#FFF',
     margin: 5,
-    alignSelf: 'center',
+    alignSelf: 'flex-end',
     paddingVertical: 2,
     paddingHorizontal: 10,
   },
