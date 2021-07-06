@@ -36,9 +36,6 @@ export default function ({ title, children, navigation }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
-    borderBottomColor: '#000',
-    borderBottomWidth: 0.2,
-    elevation: 2,
     padding: 20,
     flexDirection: 'row',
     justifyContent: 'center',
