@@ -43,6 +43,7 @@ export default function ({ route, navigation }) {
         renderItem={renderShopProducts}
         numColumns={COLUMNS}
         keyExtractor={item => item._id}
+        style={styles.container}
         ListHeaderComponent={
           <>
             <Searchbar
@@ -58,6 +59,9 @@ export default function ({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFF',
+  },
   search: {
     margin: 10,
   },

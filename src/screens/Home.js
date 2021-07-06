@@ -52,7 +52,7 @@ export default function ({ navigation }) {
           text={city ? city.name : 'Cidades'} />
       </Header>
 
-      <ScrollView>
+      <ScrollView style={styles.container}>
         <Searchbar
           style={styles.search}
           placeholder='Buscar Lojas'
@@ -75,6 +75,9 @@ export default function ({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFF',
+  },
   search: {
     margin: 10,
   },
