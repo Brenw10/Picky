@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react
 
 export default function ({ product, width, height, onPress }) {
   return (
-    <TouchableOpacity style={{ ...styles.container, width, height }} onPress={onPress}>
+    <TouchableOpacity style={{ ...styles.container, width, height }}
+      onPress={onPress} disabled={!onPress}>
       <ImageBackground source={product.image} style={styles.image} resizeMode='contain'>
         <View style={{ ...styles.priceContainer, ...styles.rounded }}>
           <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
