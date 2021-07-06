@@ -50,7 +50,7 @@ export default function ({ navigation }) {
   function renderShops() {
     return shops.map((shop, index) =>
       <View key={shop._id} style={{ marginTop: index ? 10 : 0 }}>
-        <SectionSubtitle
+        <SectionSubtitle linkIcon='shop'
           onPress={() => navigation.navigate('Shop', { shop })}>
           {shop.name}, {shop.district}
         </SectionSubtitle>

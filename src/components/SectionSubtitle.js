@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
-export default function ({ children, containerStyle, onPress }) {
+export default function ({ children, containerStyle, onPress, linkIcon }) {
   function renderLink() {
-    return <Icon name="link" size={13} color="#444" style={styles.link} />;
+    return <Icon name={linkIcon} size={13} color="#444" style={styles.link} />;
   }
   return (
     <TouchableOpacity
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   link: {
-    marginRight: 2,
+    marginRight: 5,
   },
   text: {
     fontSize: 13,
