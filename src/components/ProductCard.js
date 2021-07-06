@@ -20,20 +20,19 @@ export default function ({ product, width, height, onPress }) {
 const styles = StyleSheet.create({
   container: {
     margin: 5,
-    borderWidth: 0.1,
     flex: 1,
+    overflow: 'hidden',
     backgroundColor: '#FFF',
-    elevation: 1,
     borderWidth: 0.2,
-    borderColor: '#DDD',
-    borderRadius: 5,
+    borderColor: '#888',
+    borderRadius: 3,
   },
   image: {
     flex: 1,
     justifyContent: 'flex-end',
   },
   priceContainer: {
-    backgroundColor: '#FFF',
+    backgroundColor: 'rgba(255,255,255,0.8)',
     margin: 5,
     alignSelf: 'flex-end',
     paddingVertical: 2,
