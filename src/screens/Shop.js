@@ -3,13 +3,14 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import Header from '../components/Header';
 import ShopProduct from '../endpoints/ShopProduct';
 import ProductCard from '../components/ProductCard';
-import SectionSubtitle from '../components/SectionSubtitle';
+import SectionTitle from '../components/SectionTitle';
 import { Searchbar } from 'react-native-paper';
+import ShopInformation from '../components/ShopInformation';
 
 const COLUMNS = 3;
 
 export default function ({ route, navigation }) {
-  const [shop, setShop] = useState(route.params.shop);
+  const [shop] = useState(route.params.shop);
   const [shopProducts, setShopProducts] = useState([]);
   const [search, setSearch] = useState(route.params.search);
 
@@ -25,9 +26,25 @@ export default function ({ route, navigation }) {
     );
   }
 
+  function renderFlatListHeader() {
+    return (
+      <>
+        <SectionTitle>Dados da Loja</SectionTitle>
+        <ShopInformation containerStyle={styles.shop} shop={shop} />
+        <SectionTitle>Produtos</SectionTitle>
+        <Searchbar
+          style={styles.search}
+          placeholder='Buscar Produtos'
+          onChangeText={setSearch}
+          value={search}
+        />
+      </>
+    );
+  }
+
   return (
     <>
-      <Header title={shop.name + ', ' + shop.district} navigation={navigation} />
+      <Header title='Loja' navigation={navigation} />
 
       <FlatList
         data={shopProducts}
@@ -35,17 +52,7 @@ export default function ({ route, navigation }) {
         numColumns={COLUMNS}
         keyExtractor={item => item._id}
         style={styles.container}
-        ListHeaderComponent={
-          <>
-            <Searchbar
-              style={styles.search}
-              placeholder='Buscar Produtos'
-              onChangeText={setSearch}
-              value={search}
-            />
-            <SectionSubtitle>Produtos</SectionSubtitle>
-          </>
-        }
+        ListHeaderComponent={renderFlatListHeader()}
       />
     </>
   );
@@ -55,8 +62,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
   },
+  shop: {
+    marginHorizontal: 10,
+    elevation: 0,
+  },
   search: {
-    margin: 10,
+    marginHorizontal: 10,
+    marginBottom: 5,
   },
   row: {
     flex: 1 / COLUMNS,
