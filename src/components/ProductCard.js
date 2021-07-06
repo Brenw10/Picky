@@ -21,11 +21,6 @@ const styles = StyleSheet.create({
   container: {
     margin: 5,
     flex: 1,
-    overflow: 'hidden',
-    backgroundColor: '#FFF',
-    borderWidth: 0.2,
-    borderColor: '#888',
-    borderRadius: 3,
   },
   image: {
     flex: 1,

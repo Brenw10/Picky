@@ -29,8 +29,7 @@ export default function ({ route, navigation }) {
   function renderFlatListHeader() {
     return (
       <>
-        <SectionTitle>Dados da Loja</SectionTitle>
-        <ShopInformation containerStyle={styles.shop} shop={shop} />
+        <ShopInformation shop={shop} />
         <SectionTitle>Produtos</SectionTitle>
         <Searchbar
           style={styles.search}
@@ -64,7 +63,6 @@ const styles = StyleSheet.create({
   },
   shop: {
     marginHorizontal: 10,
-    elevation: 0,
   },
   search: {
     marginHorizontal: 10,

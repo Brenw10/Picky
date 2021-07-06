@@ -30,7 +30,7 @@ export default function ({ categories, setCategory, category }) {
       <TouchableOpacity
         style={{ ...styles.item, ...styles.selectedItem }}
         onPress={() => setVisible(true)}>
-        <View style={{ ...styles.imageContainer, ...styles.selectedImageContainer, backgroundColor: category.color }}>
+        <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
           <Image source={category.image} style={styles.image} resizeMode='contain' />
         </View>
         <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name}</Text>
@@ -68,14 +68,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     marginLeft: 10,
-    elevation: 8,
   },
   image: {
     width: 30,
     height: 30,
-  },
-  selectedImageContainer: {
-    elevation: 0,
   },
   selectedItem: {
     justifyContent: 'center',
