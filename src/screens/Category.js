@@ -30,6 +30,15 @@ export default function ({ route, navigation }) {
     );
   }
 
+  function renderFlatListHeader() {
+    return (
+      <Searchbar
+        style={styles.search}
+        placeholder='Buscar Produtos'
+      />
+    );
+  }
+
   return (
     <>
       <Header title='Categorias' navigation={navigation}>
@@ -46,15 +55,7 @@ export default function ({ route, navigation }) {
         numColumns={COLUMNS}
         keyExtractor={item => item._id}
         style={styles.container}
-        ListHeaderComponent={
-          <>
-            <Searchbar
-              style={styles.search}
-              placeholder='Buscar Produtos'
-            />
-            <SectionSubtitle>Produtos</SectionSubtitle>
-          </>
-        }
+        ListHeaderComponent={renderFlatListHeader()}
       />
     </>
   );

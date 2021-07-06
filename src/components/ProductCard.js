@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 13,
-    fontFamily: 'AirbnbCereal-Book',
+    fontFamily: 'AirbnbCereal-Light',
   },
 });
