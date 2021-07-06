@@ -8,6 +8,7 @@ import Category from '../endpoints/Category';
 import City from '../endpoints/City';
 import ShopProduct from '../endpoints/ShopProduct';
 import SectionTitle from '../components/SectionTitle';
+import Shop from '../endpoints/Shop';
 import Menu from '../components/Menu';
 import { Searchbar } from 'react-native-paper';
 
@@ -16,11 +17,13 @@ export default function ({ navigation }) {
   const [shopProducts, setShopProducts] = useState([]);
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState();
+  const [shops, setShops] = useState([]);
 
   useEffect(() => {
     Category.getAll().then(result => setCategories(result));
     ShopProduct.get().then(result => setShopProducts(result));
     City.getAll().then(result => setCities(result));
+    Shop.get().then(result => setShops(result));
   }, []);
 
   function renderCategories() {
@@ -39,6 +42,20 @@ export default function ({ navigation }) {
         key={product._id}
         product={product}
         width={150} height={200} />
+    );
+  }
+
+  function renderShops() {
+    return shops.map((shop, index) =>
+      <View key={shop._id} style={{ marginTop: index ? 10 : 0 }}>
+        <SectionSubtitle
+          onPress={() => navigation.navigate('Shop', { shop })}>
+          {shop.name}, {shop.district}
+        </SectionSubtitle>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {renderShopProducts()}
+        </ScrollView>
+      </View>
     );
   }
 
@@ -65,10 +82,7 @@ export default function ({ navigation }) {
 
         <SectionTitle>LOJAS</SectionTitle>
 
-        <SectionSubtitle>Comercial Esperança, Centro</SectionSubtitle>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {renderShopProducts()}
-        </ScrollView>
+        {renderShops()}
       </ScrollView>
     </>
   );
