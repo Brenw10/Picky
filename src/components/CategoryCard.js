@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import ImageService from '../services/Image';
 
 export default function ({ category, width, height, onPress }) {
   return (
@@ -7,7 +8,7 @@ export default function ({ category, width, height, onPress }) {
       <View style={{ ...styles.container, width, height }}>
         <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
           <Image
-            source={category.image}
+            source={{ uri: ImageService.getFromPath(category.image) }}
             style={styles.image}
             resizeMode='contain' />
         </View>
