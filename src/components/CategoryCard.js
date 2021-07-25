@@ -8,7 +8,7 @@ export default function ({ category, width, height, onPress }) {
       <View style={{ ...styles.container, width, height }}>
         <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
           <Image
-            source={{ uri: ImageService.getFromPath(category.image) }}
+            source={{ uri: ImageService.getUrlFromPath(category.image) }}
             style={styles.image}
             resizeMode='contain' />
         </View>

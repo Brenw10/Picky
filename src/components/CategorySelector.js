@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ImageService from '../services/Image';
 
 export default function ({ categories, setCategory, category }) {
   const [visible, setVisible] = useState(false);
@@ -18,7 +19,7 @@ export default function ({ categories, setCategory, category }) {
         style={{ ...styles.item, marginTop: index ? 20 : 0 }}
         onPress={() => onSelect(category)}>
         <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
-          <Image source={category.image} style={styles.image} resizeMode='contain' />
+          <Image source={{ uri: ImageService.getUrlFromPath(category.image) }} style={styles.image} resizeMode='contain' />
         </View>
         <Text style={styles.itemText}>{category.name}</Text>
       </TouchableOpacity>
@@ -31,7 +32,7 @@ export default function ({ categories, setCategory, category }) {
         style={{ ...styles.item, ...styles.selectedItem }}
         onPress={() => setVisible(true)}>
         <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
-          <Image source={category.image} style={styles.image} resizeMode='contain' />
+          <Image source={{ uri: ImageService.getUrlFromPath(category.image) }} style={styles.image} resizeMode='contain' />
         </View>
         <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name}</Text>
         <Icon name="chevron-down" size={17} color="#444" />
