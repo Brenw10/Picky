@@ -5,7 +5,6 @@ import Category from '../endpoints/Category';
 import CategorySelector from '../components/CategorySelector';
 import ShopProduct from '../endpoints/ShopProduct';
 import ProductCard from '../components/ProductCard';
-import SectionSubtitle from '../components/SectionSubtitle';
 import { Searchbar } from 'react-native-paper';
 
 const COLUMNS = 3;
