@@ -1,9 +1,9 @@
 import Axios from '../config/Axios';
 
 function getAll() {
-  return Axios.get('city').then(result => result.data);
+  return Axios.get('/store/city');
 }
 
 export default {
-  getAll
+  getAll,
 };

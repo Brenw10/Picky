@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import ImageService from '../services/Image';
 
 export default function ({ product, width, height, onPress }) {
   return (
     <TouchableOpacity style={{ ...styles.container, width, height }}
       onPress={onPress} disabled={!onPress}>
-      <ImageBackground source={product.image} style={styles.image} resizeMode='contain'>
+      <ImageBackground source={{ uri: ImageService.getUrlFromPath(product.image) }} style={styles.image} resizeMode='contain'>
         <View style={styles.priceContainer}>
           <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
         </View>

@@ -6,25 +6,25 @@ import SectionSubtitle from '../components/SectionSubtitle';
 import ProductCard from '../components/ProductCard';
 import Category from '../endpoints/Category';
 import City from '../endpoints/City';
-import ShopProduct from '../endpoints/ShopProduct';
 import SectionTitle from '../components/SectionTitle';
 import Shop from '../endpoints/Shop';
 import Menu from '../components/Menu';
 import { Searchbar } from 'react-native-paper';
 
 export default function ({ navigation }) {
-  const [categories, setCategories] = useState([]);
-  const [shopProducts, setShopProducts] = useState([]);
   const [cities, setCities] = useState([]);
-  const [city, setCity] = useState();
+  const [categories, setCategories] = useState([]);
   const [shops, setShops] = useState([]);
+  const [city, setCity] = useState();
 
   useEffect(() => {
-    Category.getAll().then(result => setCategories(result));
-    ShopProduct.get().then(result => setShopProducts(result));
-    City.getAll().then(result => setCities(result));
-    Shop.get().then(result => setShops(result));
+    City.getAll().then(({ data }) => setCities(data));
+    Category.getAll().then(({ data }) => setCategories(data));
   }, []);
+
+  useEffect(() => {
+    if (city) Shop.getAllFromCity(city.name).then(({ data }) => setShops(data));
+  }, [city]);
 
   function renderCategories() {
     return categories.map(category =>
@@ -37,7 +37,7 @@ export default function ({ navigation }) {
   }
 
   function renderShopProducts(shop) {
-    return shopProducts.map(product =>
+    return shop.products.map(product =>
       <ProductCard
         key={product._id}
         product={product}

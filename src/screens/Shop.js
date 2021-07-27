@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import Header from '../components/Header';
-import ShopProduct from '../endpoints/ShopProduct';
 import ProductCard from '../components/ProductCard';
 import SectionTitle from '../components/SectionTitle';
 import { Searchbar } from 'react-native-paper';
 import ShopInformation from '../components/ShopInformation';
 import GoogleMaps from '../services/GoogleMaps';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Product from '../endpoints/Product';
 
 const COLUMNS = 3;
 
 export default function ({ route, navigation }) {
-  const [shop] = useState(route.params.shop);
-  const [shopProducts, setShopProducts] = useState([]);
+  const { shop } = route.params;
+  const [products, setProducts] = useState(shop.products);
   const [search, setSearch] = useState(route.params.search);
 
   useEffect(() => {
-    ShopProduct.get().then(result => setShopProducts(result));
-  }, []);
+    if (search) {
+      Product.getByName(shop._id, search).then(({ data }) => setProducts(data));
+    } else {
+      setProducts(shop.products);
+    }
+  }, [search]);
 
-  function renderShopProducts({ item }) {
+  function renderProducts({ item }) {
     return (
       <View style={styles.row}>
         <ProductCard product={item} height={180} />
@@ -54,8 +58,8 @@ export default function ({ route, navigation }) {
       </Header>
 
       <FlatList
-        data={shopProducts}
-        renderItem={renderShopProducts}
+        data={products}
+        renderItem={renderProducts}
         numColumns={COLUMNS}
         keyExtractor={item => item._id}
         style={styles.container}
