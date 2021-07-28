@@ -17,11 +17,8 @@ export default function ({ route, navigation }) {
   const [search, setSearch] = useState(route.params.search);
 
   useEffect(() => {
-    if (search) {
-      Product.getByName(shop._id, search).then(({ data }) => setProducts(data));
-    } else {
-      setProducts(shop.products);
-    }
+    const query = { 'products.name': search };
+    Product.searchByStore(shop._id, query).then(({ data }) => setProducts(data));
   }, [search]);
 
   function renderProducts({ item }) {

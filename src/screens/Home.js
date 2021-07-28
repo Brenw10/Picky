@@ -7,7 +7,7 @@ import ProductCard from '../components/ProductCard';
 import Category from '../endpoints/Category';
 import City from '../endpoints/City';
 import SectionTitle from '../components/SectionTitle';
-import Shop from '../endpoints/Shop';
+import Store from '../endpoints/Store';
 import Menu from '../components/Menu';
 import { Searchbar } from 'react-native-paper';
 
@@ -16,6 +16,7 @@ export default function ({ navigation }) {
   const [categories, setCategories] = useState([]);
   const [shops, setShops] = useState([]);
   const [city, setCity] = useState();
+  const [search, setSearch] = useState();
 
   useEffect(() => {
     City.getAll().then(({ data }) => setCities(data));
@@ -23,15 +24,16 @@ export default function ({ navigation }) {
   }, []);
 
   useEffect(() => {
-    if (city) Shop.getAllFromCity(city.name).then(({ data }) => setShops(data));
-  }, [city]);
+    const query = { city: city?.name, name: search, };
+    Store.search(query).then(({ data }) => setShops(data));
+  }, [city, search]);
 
   function renderCategories() {
     return categories.map(category =>
       <CategoryCard
         key={category._id}
         category={category}
-        onPress={() => navigation.navigate('Category', { category })}
+        onPress={() => navigation.navigate('Category', { category, city })}
         width={100} height={100} />
     );
   }
@@ -73,8 +75,8 @@ export default function ({ navigation }) {
 
       <ScrollView style={styles.container}>
         <Searchbar
-          style={styles.search}
-          placeholder='Buscar Lojas'
+          style={styles.search} placeholder='Buscar Lojas'
+          value={search} onChangeText={setSearch}
         />
 
         <SectionSubtitle>Categorias</SectionSubtitle>

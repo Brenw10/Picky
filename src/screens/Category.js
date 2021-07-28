@@ -3,23 +3,28 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import Header from '../components/Header';
 import Category from '../endpoints/Category';
 import CategorySelector from '../components/CategorySelector';
-import ShopProduct from '../endpoints/ShopProduct';
 import ProductCard from '../components/ProductCard';
 import { Searchbar } from 'react-native-paper';
+import Product from '../endpoints/Product';
 
 const COLUMNS = 3;
 
 export default function ({ route, navigation }) {
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState(route.params.category);
-  const [shopProducts, setShopProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState();
 
   useEffect(() => {
-    Category.getAll().then(result => setCategories(result));
-    ShopProduct.get().then(result => setShopProducts(result));
+    Category.getAll().then(({ data }) => setCategories(data));
   }, []);
 
-  function renderShopProducts({ item }) {
+  useEffect(() => {
+    const query = { city: route.params?.city?.name, 'products.name': search };
+    Product.searchByCategory(category._id, query).then(({ data }) => setProducts(data));
+  }, [category, search]);
+
+  function renderProducts({ item }) {
     return (
       <View style={styles.row}>
         <ProductCard
@@ -32,8 +37,8 @@ export default function ({ route, navigation }) {
   function renderFlatListHeader() {
     return (
       <Searchbar
-        style={styles.search}
-        placeholder='Buscar Produtos'
+        style={styles.search} placeholder='Buscar Produtos'
+        value={search} onChangeText={setSearch}
       />
     );
   }
@@ -49,8 +54,8 @@ export default function ({ route, navigation }) {
       </Header>
 
       <FlatList
-        data={shopProducts}
-        renderItem={renderShopProducts}
+        data={products}
+        renderItem={renderProducts}
         numColumns={COLUMNS}
         keyExtractor={item => item._id}
         style={styles.container}
