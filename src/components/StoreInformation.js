@@ -3,14 +3,14 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import GoogleMaps from '../services/GoogleMaps';
 
-export default function ({ shop, containerStyle }) {
+export default function ({ store }) {
   return (
-    <View style={{ ...containerStyle }}>
-      <Text style={styles.title}>{shop.name.toUpperCase()}</Text>
+    <View>
+      <Text style={styles.title}>{store.name.toUpperCase()}</Text>
       <Text style={styles.description}>
-        {shop.street + ', ' + shop.number} - {shop.district + ' - ' + shop.city}
+        {store.street + ', ' + store.number} - {store.district + ' - ' + store.city}
       </Text>
-      <Button icon='map' onPress={() => GoogleMaps.search(`${shop.street},${shop.number}`)}>
+      <Button icon='map' onPress={() => GoogleMaps.search(`${store.street},${store.number}`)}>
         Abrir no Google Maps
       </Button>
     </View>
