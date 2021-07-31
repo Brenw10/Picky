@@ -6,6 +6,7 @@ export default function ({ children, containerStyle, onPress, leftIcon }) {
   function renderLink() {
     return <Icon name={leftIcon} size={13} color="#444" style={styles.link} />;
   }
+  
   return (
     <TouchableOpacity
       style={{ ...styles.container, ...containerStyle }}

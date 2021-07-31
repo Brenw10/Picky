@@ -4,12 +4,11 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
 export default function ({ title, children, navigation }) {
-
   function renderChildren() {
     return (
       <View style={styles.rightContainer}>
         {children}
-      </ View>
+      </View>
     );
   }
 
