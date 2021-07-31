@@ -6,5 +6,5 @@ function search(search) {
 }
 
 export default {
-  search
+  search,
 }
