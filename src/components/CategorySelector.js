@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImageService from '../services/Image';
+import Category from '../endpoints/Category';
 
-export default function ({ categories, setCategory, category }) {
+export default function ({ setCategory, category }) {
+  const [categories, setCategories] = useState([]);
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    Category.getAll().then(({ data }) => setCategories(data));
+  }, []);
 
   function onSelect(item) {
     setCategory(item);

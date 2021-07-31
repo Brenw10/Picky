@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import Header from '../components/Header';
-import Category from '../endpoints/Category';
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
-import { Searchbar } from 'react-native-paper';
+import Searchbar from '../components/Searchbar';
 import Product from '../endpoints/Product';
 
 const COLUMNS = 3;
 
 export default function ({ route, navigation }) {
-  const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState(route.params.category);
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState(route.params.category);
   const [search, setSearch] = useState();
-
-  useEffect(() => {
-    Category.getAll().then(({ data }) => setCategories(data));
-  }, []);
 
   useEffect(() => {
     const query = { city: route.params?.city?.name, 'products.name': search };
@@ -28,7 +22,7 @@ export default function ({ route, navigation }) {
     return (
       <View style={styles.row}>
         <ProductCard
-          onPress={() => navigation.navigate('Store', { shop: item.store, search: item.name })}
+          onPress={() => navigation.navigate('Store', { store: item.store, search: item.name })}
           product={item} height={180} />
       </View>
     );
@@ -36,8 +30,7 @@ export default function ({ route, navigation }) {
 
   function renderFlatListHeader() {
     return (
-      <Searchbar
-        style={styles.search} placeholder='Buscar Produtos'
+      <Searchbar placeholder='Buscar Produtos'
         value={search} onChangeText={setSearch}
       />
     );
@@ -46,11 +39,7 @@ export default function ({ route, navigation }) {
   return (
     <>
       <Header title='Categorias' navigation={navigation}>
-        <CategorySelector
-          categories={categories}
-          setCategory={setCategory}
-          category={category}
-        />
+        <CategorySelector setCategory={setCategory} category={category} />
       </Header>
 
       <FlatList
@@ -68,12 +57,6 @@ export default function ({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
-  },
-  search: {
-    margin: 10,
-    elevation: 0,
-    borderBottomWidth: 0.2,
-    borderBottomColor: '#AAA',
   },
   row: {
     flex: 1 / COLUMNS,
