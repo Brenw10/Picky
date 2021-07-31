@@ -28,7 +28,7 @@ export default function ({ route, navigation }) {
     return (
       <View style={styles.row}>
         <ProductCard
-          onPress={() => navigation.navigate('Shop', { shop: item.store, search: item.name })}
+          onPress={() => navigation.navigate('Store', { shop: item.store, search: item.name })}
           product={item} height={180} />
       </View>
     );

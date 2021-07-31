@@ -44,7 +44,7 @@ export default function ({ navigation }) {
         key={product._id}
         product={product}
         width={150} height={200}
-        onPress={() => navigation.navigate('Shop', { shop, search: product.name })}
+        onPress={() => navigation.navigate('Store', { shop, search: product.name })}
       />
     );
   }
@@ -53,7 +53,7 @@ export default function ({ navigation }) {
     return shops.map((shop, index) =>
       <View key={shop._id} style={{ marginTop: index ? 10 : 0 }}>
         <SectionSubtitle leftIcon='shop'
-          onPress={() => navigation.navigate('Shop', { shop })}>
+          onPress={() => navigation.navigate('Store', { shop })}>
           {shop.name}, {shop.district}
         </SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
