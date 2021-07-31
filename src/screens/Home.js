@@ -9,12 +9,12 @@ import City from '../endpoints/City';
 import SectionTitle from '../components/SectionTitle';
 import Store from '../endpoints/Store';
 import Menu from '../components/Menu';
-import { Searchbar } from 'react-native-paper';
+import Searchbar from '../components/Searchbar';
 
 export default function ({ navigation }) {
   const [cities, setCities] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [shops, setShops] = useState([]);
+  const [stores, setStores] = useState([]);
   const [city, setCity] = useState();
   const [search, setSearch] = useState();
 
@@ -24,8 +24,8 @@ export default function ({ navigation }) {
   }, []);
 
   useEffect(() => {
-    const query = { city: city?.name, name: search, };
-    Store.search(query).then(({ data }) => setShops(data));
+    const query = { city: city?._id, name: search, };
+    Store.search(query).then(({ data }) => setStores(data));
   }, [city, search]);
 
   function renderCategories() {
@@ -38,26 +38,26 @@ export default function ({ navigation }) {
     );
   }
 
-  function renderShopProducts(shop) {
-    return shop.products.map(product =>
+  function renderProducts(store) {
+    return store.products.map(product =>
       <ProductCard
         key={product._id}
         product={product}
         width={150} height={200}
-        onPress={() => navigation.navigate('Store', { shop, search: product.name })}
+        onPress={() => navigation.navigate('Store', { store, search: product.name })}
       />
     );
   }
 
-  function renderShops() {
-    return shops.map((shop, index) =>
-      <View key={shop._id} style={{ marginTop: index ? 10 : 0 }}>
+  function renderStores() {
+    return stores.map(store =>
+      <View key={store._id}>
         <SectionSubtitle leftIcon='shop'
-          onPress={() => navigation.navigate('Store', { shop })}>
-          {shop.name}, {shop.district}
+          onPress={() => navigation.navigate('Store', { store })}>
+          {store.name}, {store.district}
         </SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {renderShopProducts(shop)}
+          {renderProducts(store)}
         </ScrollView>
       </View>
     );
@@ -70,12 +70,11 @@ export default function ({ navigation }) {
           items={cities}
           setSelected={setCity}
           displayField='name'
-          text={city ? city.name : 'Cidades'} />
+          text={city?.name || 'Cidades'} />
       </Header>
 
       <ScrollView style={styles.container}>
-        <Searchbar
-          style={styles.search} placeholder='Buscar Lojas'
+        <Searchbar placeholder='Buscar Lojas'
           value={search} onChangeText={setSearch}
         />
 
@@ -85,8 +84,7 @@ export default function ({ navigation }) {
         </ScrollView>
 
         <SectionTitle>LOJAS</SectionTitle>
-
-        {renderShops()}
+        {renderStores()}
       </ScrollView>
     </>
   );
@@ -95,11 +93,5 @@ export default function ({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
-  },
-  search: {
-    margin: 10,
-    elevation: 0,
-    borderBottomWidth: 0.2,
-    borderBottomColor: '#AAA',
   },
 });
