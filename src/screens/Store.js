@@ -56,7 +56,6 @@ export default function ({ route, navigation }) {
         renderItem={renderProducts}
         numColumns={COLUMNS}
         keyExtractor={item => item._id}
-        style={styles.container}
         ListHeaderComponent={renderFlatListHeader()}
       />
     </>
@@ -64,9 +63,6 @@ export default function ({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF',
-  },
   row: {
     flex: 1 / COLUMNS,
     marginBottom: 10,

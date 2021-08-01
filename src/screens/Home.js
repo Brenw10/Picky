@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import CategoryCard from '../components/CategoryCard';
 import Header from '../components/Header';
 import SectionSubtitle from '../components/SectionSubtitle';
@@ -73,7 +73,7 @@ export default function ({ navigation }) {
           text={city?.name || 'Cidades'} />
       </Header>
 
-      <ScrollView style={styles.container}>
+      <ScrollView>
         <Searchbar placeholder='Buscar Lojas'
           value={search} onChangeText={setSearch}
         />
@@ -89,9 +89,3 @@ export default function ({ navigation }) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF',
-  },
-});

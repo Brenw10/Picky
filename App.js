@@ -15,11 +15,11 @@ const theme = {
 
 export default function () {
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <PaperProvider theme={theme}>
+    <PaperProvider theme={theme}>
+      <SafeAreaView style={styles.safeAreaView}>
         <Navigator />
-      </PaperProvider>
-    </SafeAreaView>
+      </SafeAreaView>
+    </PaperProvider>
   );
 };
 
