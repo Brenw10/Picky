@@ -74,9 +74,7 @@ export default function ({ navigation }) {
       </Header>
 
       <ScrollView>
-        <Searchbar placeholder='Buscar Lojas'
-          value={search} onChangeText={setSearch}
-        />
+        <Searchbar placeholder='Buscar Lojas' onSearch={setSearch} />
 
         <SectionSubtitle>Categorias</SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

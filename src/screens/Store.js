@@ -34,9 +34,7 @@ export default function ({ route, navigation }) {
       <>
         <StoreInformation store={store} />
         <SectionTitle>Produtos</SectionTitle>
-        <Searchbar placeholder='Buscar Produtos'
-          onChangeText={setSearch} value={search}
-        />
+        <Searchbar placeholder='Buscar Produtos' onSearch={setSearch} />
       </>
     );
   }

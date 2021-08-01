@@ -30,9 +30,7 @@ export default function ({ route, navigation }) {
 
   function renderFlatListHeader() {
     return (
-      <Searchbar placeholder='Buscar Produtos'
-        value={search} onChangeText={setSearch}
-      />
+      <Searchbar placeholder='Buscar Produtos' onSearch={setSearch} />
     );
   }
 
