@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Navigator from './src/components/Navigator';
+import StoreNavigation from './src/navigation/Store';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import './src/config/Moment';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,7 +17,7 @@ export default function () {
   return (
     <PaperProvider theme={theme}>
       <SafeAreaView style={styles.safeAreaView}>
-        <Navigator />
+        <StoreNavigation />
       </SafeAreaView>
     </PaperProvider>
   );
