@@ -14,7 +14,7 @@ export default function ({ category, width, height, onPress }) {
         </View>
         <Text style={styles.title}>{category.name}</Text>
       </View>
-    </TouchableOpacity >
+    </TouchableOpacity>
   );
 }
 
