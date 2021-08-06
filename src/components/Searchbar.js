@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-export default function ({ placeholder, onSearch, wait = 500 }) {
-  const [value, setValue] = useState();
+export default function ({ placeholder, search, onSearch, wait = 500 }) {
+  const [value, setValue] = useState(search);
   const [searchTimeout, setSearchTimeout] = useState();
 
   function onChangeText(text) {
