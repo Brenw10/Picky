@@ -65,7 +65,7 @@ export default function ({ navigation }) {
 
   return (
     <>
-      <Header title='Página Inicial'>
+      <Header title='Página Inicial' navigation={navigation}>
         <Dropdown
           items={cities}
           setSelected={setCity}

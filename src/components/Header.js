@@ -21,8 +21,8 @@ export default function ({ title, children, navigation }) {
   }
 
   return (
-    <View style={{ ...styles.container, paddingLeft: navigation ? 10 : 20 }}>
-      {navigation && renderBackButton()}
+    <View style={{ ...styles.container, paddingLeft: navigation?.canGoBack() ? 10 : 20 }}>
+      {navigation?.canGoBack() && renderBackButton()}
       <View style={styles.leftContainer}>
         <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
         <Text style={styles.title}>{title}</Text>
