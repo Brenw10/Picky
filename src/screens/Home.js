@@ -8,7 +8,7 @@ import Category from '../api/Category';
 import City from '../api/City';
 import SectionTitle from '../components/SectionTitle';
 import Store from '../api/Store';
-import Menu from '../components/Menu';
+import Dropdown from '../components/Dropdown';
 import Searchbar from '../components/Searchbar';
 
 export default function ({ navigation }) {
@@ -66,7 +66,7 @@ export default function ({ navigation }) {
   return (
     <>
       <Header title='Página Inicial'>
-        <Menu
+        <Dropdown
           items={cities}
           setSelected={setCity}
           displayField='name'
