@@ -7,7 +7,7 @@ import Searchbar from '../components/Searchbar';
 import StoreInformation from '../components/StoreInformation';
 import GoogleMaps from '../services/GoogleMaps';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Product from '../endpoints/Product';
+import Product from '../api/Product';
 
 const COLUMNS = 3;
 

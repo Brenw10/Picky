@@ -3,7 +3,7 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImageService from '../services/Image';
-import Category from '../endpoints/Category';
+import Category from '../api/Category';
 
 export default function ({ setCategory, category }) {
   const [categories, setCategories] = useState([]);

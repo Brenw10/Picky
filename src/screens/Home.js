@@ -4,10 +4,10 @@ import CategoryCard from '../components/CategoryCard';
 import Header from '../components/Header';
 import SectionSubtitle from '../components/SectionSubtitle';
 import ProductCard from '../components/ProductCard';
-import Category from '../endpoints/Category';
-import City from '../endpoints/City';
+import Category from '../api/Category';
+import City from '../api/City';
 import SectionTitle from '../components/SectionTitle';
-import Store from '../endpoints/Store';
+import Store from '../api/Store';
 import Menu from '../components/Menu';
 import Searchbar from '../components/Searchbar';
 

@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import CategorySelector from '../components/CategorySelector';
 import ProductCard from '../components/ProductCard';
 import Searchbar from '../components/Searchbar';
-import Product from '../endpoints/Product';
+import Product from '../api/Product';
 
 const COLUMNS = 3;
 
