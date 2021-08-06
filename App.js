@@ -4,6 +4,7 @@ import StoreNavigation from './src/navigation/Store';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import './src/config/Moment';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import 'react-native-gesture-handler';
 
 const theme = {
   ...DefaultTheme,
