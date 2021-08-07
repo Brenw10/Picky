@@ -6,7 +6,9 @@ import { Input } from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Button } from 'react-native-elements';
 import User from '../api/User';
+import Login from '../api/Login';
 import { useAlert } from '../contexts/Alert';
+import { useUserToken } from '../contexts/UserToken';
 
 export default function ({ navigation }) {
   const [name, setName] = useState('');
@@ -14,14 +16,17 @@ export default function ({ navigation }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const { setContent } = useAlert();
+  const { setToken } = useUserToken();
 
   async function createUser() {
     try {
       await User.create(name, email, password);
-      setContent('Conta criada com sucesso!');
+      const { data } = await Login.getToken(email, password);
+      setToken(data);
+      setContent('Conta Criada e Sucesso no Login');
       navigation.goBack();
     } catch {
-      setContent('Erro ao criar conta!')
+      setContent('Erro ao Criar Conta');
     }
   }
 
