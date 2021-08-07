@@ -6,6 +6,7 @@ import './src/config/Moment';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import 'react-native-gesture-handler';
 import AlertProvider from './src/contexts/Alert';
+import UserToken from './src/contexts/UserToken';
 
 const theme = {
   ...DefaultTheme,
@@ -20,9 +21,11 @@ export default function () {
   return (
     <PaperProvider theme={theme}>
       <AlertProvider>
-        <SafeAreaView style={styles.safeAreaView}>
-          <StoreNavigation />
-        </SafeAreaView>
+        <UserToken>
+          <SafeAreaView style={styles.safeAreaView}>
+            <StoreNavigation />
+          </SafeAreaView>
+        </UserToken>
       </AlertProvider>
     </PaperProvider>
   );
