@@ -38,7 +38,7 @@ export default function ({ navigation }) {
           placeholder='Digite sua senha' secureTextEntry={true}
           leftIcon={<FontAwesome name='lock' size={21} color='#87939e' />}
         />
-        <Button title='Login' onPress={() => login()} />
+        <Button title='Accessar Conta' onPress={() => login()} />
       </ScrollView>
     </KeyboardAvoidingView>
   )
