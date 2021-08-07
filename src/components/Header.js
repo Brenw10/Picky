@@ -1,7 +1,8 @@
 import moment from 'moment';
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function ({ title, children, navigation }) {
   function renderChildren() {
@@ -14,15 +15,23 @@ export default function ({ title, children, navigation }) {
 
   function renderBackButton() {
     return (
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Icon name="chevron-thin-left" size={25} color="#444" />
+      <TouchableOpacity style={styles.leftButton} onPress={() => navigation.goBack()}>
+        <Entypo name="chevron-thin-left" size={25} color="#444" />
+      </TouchableOpacity>
+    );
+  }
+
+  function renderMenu() {
+    return (
+      <TouchableOpacity style={styles.leftButton} onPress={() => navigation.navigate('Menu')}>
+        <Ionicons name="md-menu-outline" size={28} color="#444" />
       </TouchableOpacity>
     );
   }
 
   return (
-    <View style={{ ...styles.container, paddingLeft: navigation?.canGoBack() ? 10 : 20 }}>
-      {navigation?.canGoBack() && renderBackButton()}
+    <View style={styles.container}>
+      {navigation?.canGoBack() ? renderBackButton() : renderMenu()}
       <View style={styles.leftContainer}>
         <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
         <Text style={styles.title}>{title}</Text>
@@ -38,8 +47,9 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: 'row',
     justifyContent: 'center',
+    paddingLeft: 10,
   },
-  backButton: {
+  leftButton: {
     marginRight: 10,
     alignSelf: 'center',
   },
