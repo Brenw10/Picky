@@ -4,7 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import Category from '../screens/Category';
 import Store from '../screens/Store';
-import User from '../screens/User';
+import Menu from '../screens/Menu';
+import CreateUser from '../screens/CreateUser';
 
 const Stack = createStackNavigator();
 
@@ -25,9 +26,10 @@ export default function () {
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='Category' component={Category} />
             <Stack.Screen name='Store' component={Store} />
+            <Stack.Screen name='CreateUser' component={CreateUser} />
           </Stack.Group>
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
-            <Stack.Screen name='User' component={User} />
+            <Stack.Screen name='Menu' component={Menu} />
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
