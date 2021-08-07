@@ -6,6 +6,8 @@ import Category from '../screens/Category';
 import Store from '../screens/Store';
 import Menu from '../screens/Menu';
 import CreateUser from '../screens/CreateUser';
+import { Snackbar } from 'react-native-paper';
+import { useAlert } from '../contexts/Alert';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,8 @@ const theme = {
 };
 
 export default function () {
+  const { content, setContent } = useAlert();
+
   return (
     <>
       <NavigationContainer theme={theme}>
@@ -32,6 +36,7 @@ export default function () {
             <Stack.Screen name='Menu' component={Menu} />
           </Stack.Group>
         </Stack.Navigator>
+        <Snackbar visible={content} onDismiss={() => setContent()}>{content}</Snackbar>
       </NavigationContainer>
     </>
   );
