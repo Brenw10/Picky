@@ -1,19 +1,42 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import { useUserToken } from '../contexts/UserToken';
+import { useAlert } from '../contexts/Alert';
 
 export default function ({ navigation }) {
+  const { token, setToken } = useUserToken();
+  const { setContent } = useAlert();
   const links = [
-    { name: 'Criar Conta', screen: 'CreateUser' },
+    {
+      name: 'Criar Conta',
+      isVisible: !token,
+      onPress: () => navigation.navigate('CreateUser'),
+    },
+    {
+      name: 'Acessar Conta',
+      isVisible: !token,
+      onPress: () => navigation.navigate('Login'),
+    },
+    {
+      name: 'Sair da Conta',
+      isVisible: token,
+      onPress: () => {
+        setToken(false);
+        setContent('Você saiu da conta');
+      },
+    },
   ];
 
   function renderLinks() {
-    return links.map((link, index) =>
-      <TouchableOpacity key={index} style={styles.link}
-        onPress={() => navigation.navigate(link.screen)}>
-        <Text style={styles.linkText}>{link.name}</Text>
-      </TouchableOpacity>
-    );
+    return links
+      .filter(link => link.isVisible)
+      .map((link, index) =>
+        <TouchableOpacity key={index} style={styles.link}
+          onPress={() => link.onPress()}>
+          <Text style={styles.linkText}>{link.name}</Text>
+        </TouchableOpacity>
+      );
   }
 
   return (

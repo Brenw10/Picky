@@ -8,6 +8,7 @@ import Menu from '../screens/Menu';
 import CreateUser from '../screens/CreateUser';
 import { Snackbar } from 'react-native-paper';
 import { useAlert } from '../contexts/Alert';
+import Login from '../screens/Login';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ export default function () {
             <Stack.Screen name='Category' component={Category} />
             <Stack.Screen name='Store' component={Store} />
             <Stack.Screen name='CreateUser' component={CreateUser} />
+            <Stack.Screen name='Login' component={Login} />
           </Stack.Group>
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
             <Stack.Screen name='Menu' component={Menu} />
