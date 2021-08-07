@@ -19,10 +19,10 @@ export default function ({ navigation }) {
     try {
       const { data } = await Login.getToken(email, password);
       setToken(data);
-      setContent('Sucesso no Login');
+      setContent('Sucesso no login');
       navigation.goBack();
     } catch {
-      setContent('Dados do Usuário Inválidos');
+      setContent('Dados do usuário inválidos');
     }
   }
 

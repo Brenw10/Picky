@@ -23,10 +23,10 @@ export default function ({ navigation }) {
       await User.create(name, email, password);
       const { data } = await Login.getToken(email, password);
       setToken(data);
-      setContent('Conta Criada e Sucesso no Login');
+      setContent('Conta criada e sucesso no login');
       navigation.goBack();
     } catch {
-      setContent('Erro ao Criar Conta');
+      setContent('Erro ao criar conta');
     }
   }
 
