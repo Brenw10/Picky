@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import 'react-native-gesture-handler';
 import AlertProvider from './src/contexts/Alert';
 import UserToken from './src/contexts/UserToken';
+import SnackAlert from './src/components/SnackAlert';
 
 const theme = {
   ...DefaultTheme,
@@ -26,6 +27,7 @@ export default function () {
             <StoreNavigation />
           </SafeAreaView>
         </UserToken>
+        <SnackAlert />
       </AlertProvider>
     </PaperProvider>
   );
