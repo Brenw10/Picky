@@ -26,6 +26,7 @@ export default function ({ navigation }) {
       isVisible: token,
       onPress: () => {
         setToken(false);
+        setUser();
         setContent('Você saiu da conta');
       },
     },
@@ -49,7 +50,7 @@ export default function ({ navigation }) {
   function renderUser() {
     return (
       <>
-        <Text style={styles.userText}>Bem-vindo</Text>
+        <Text style={styles.welcomeText}>BEM-VINDO</Text>
         <Text style={styles.userText}>{user.name}</Text>
       </>
     );
@@ -74,6 +75,9 @@ const styles = StyleSheet.create({
     margin: 50,
     alignItems: 'center',
     flex: 1,
+  },
+  welcomeText: {
+    fontFamily: 'AirbnbCereal-Medium',
   },
   userText: {
     fontFamily: 'AirbnbCereal-Light',
