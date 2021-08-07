@@ -3,8 +3,11 @@ import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
+import { useEffect, useState } from 'react';
+import User from '../api/User';
 
 export default function ({ navigation }) {
+  const [user, setUser] = useState();
   const { token, setToken } = useUserToken();
   const { setContent } = useAlert();
   const links = [
@@ -28,6 +31,10 @@ export default function ({ navigation }) {
     },
   ];
 
+  useEffect(() => {
+    if (token) User.getMyself(token).then(({ data }) => setUser(data));
+  }, [token]);
+
   function renderLinks() {
     return links
       .filter(link => link.isVisible)
@@ -39,12 +46,22 @@ export default function ({ navigation }) {
       );
   }
 
+  function renderUser() {
+    return (
+      <>
+        <Text style={styles.userText}>Bem-vindo</Text>
+        <Text style={styles.userText}>{user.name}</Text>
+      </>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <EvilIcons name="close" size={35} color="#444" />
       </TouchableOpacity>
       <Text style={styles.closeText}>FECHAR</Text>
+      {user && renderUser()}
       <View style={styles.linkContainer}>
         {renderLinks()}
       </View>
@@ -57,6 +74,9 @@ const styles = StyleSheet.create({
     margin: 50,
     alignItems: 'center',
     flex: 1,
+  },
+  userText: {
+    fontFamily: 'AirbnbCereal-Light',
   },
   closeText: {
     fontSize: 8,
