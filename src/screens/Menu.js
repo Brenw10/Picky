@@ -5,9 +5,6 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 export default function ({ navigation }) {
   const links = [
     { name: 'Criar Conta', screen: 'CreateUser' },
-    { name: 'Acessar Conta', screen: 'Login' },
-    { name: 'Adicionar Produto', screen: 'CreateProduct' },
-    { name: 'Ver Produtos', screen: 'Products' },
   ];
 
   function renderLinks() {

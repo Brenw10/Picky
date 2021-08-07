@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingLeft: 10,
+    zIndex: 100,
   },
   leftButton: {
     marginRight: 10,
