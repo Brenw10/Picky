@@ -9,7 +9,7 @@ export default function ({ storeId, name, children, columns, height }) {
   useEffect(() => {
     const query = { 'products.name': name };
     Product.searchByStore(storeId, query).then(({ data }) => setProducts(data));
-  }, [search]);
+  }, [name]);
 
   function renderProducts({ item }) {
     return (
