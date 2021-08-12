@@ -46,12 +46,23 @@ export default function ({ setCategory, category }) {
     );
   }
 
+  function renderDefaultButton() {
+    return (
+      <TouchableOpacity
+        style={{ ...styles.item, ...styles.selectedItem }}
+        onPress={() => setVisible(true)}>
+        <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>Categoria</Text>
+        <Icon name="chevron-down" size={17} color="#444" />
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <Menu
       contentStyle={{ paddingVertical: 15 }}
       visible={visible}
       onDismiss={() => setVisible(false)}
-      anchor={renderButton()}>
+      anchor={category ? renderButton() : renderDefaultButton()}>
       {renderItems()}
     </Menu>
   );
