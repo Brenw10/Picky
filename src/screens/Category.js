@@ -14,7 +14,7 @@ export default function ({ route, navigation }) {
   const [search, setSearch] = useState();
 
   useEffect(() => {
-    const query = { city: route.params?.city?.name, 'products.name': search };
+    const query = { city: route.params?.city?.name, 'products.name': search, 'products.quantity': 1 };
     Product.searchByCategory(category._id, query).then(({ data }) => setProducts(data));
   }, [category, search]);
 

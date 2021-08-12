@@ -3,11 +3,11 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
-export default function ({ storeId, name, children, columns, height, editable }) {
+export default function ({ storeId, name, children, columns, height, minQuantity, editable }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const query = { 'products.name': name };
+    const query = { 'products.name': name, 'products.quantity': minQuantity };
     Product.searchByStore(storeId, query).then(({ data }) => setProducts(data));
   }, [name]);
 
