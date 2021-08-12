@@ -8,6 +8,7 @@ import Menu from '../screens/Menu';
 import CreateUser from '../screens/CreateUser';
 import Login from '../screens/Login';
 import ManageProduct from '../screens/ManageProduct';
+import CreateProduct from '../screens/CreateProduct';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ export default function () {
             <Stack.Screen name='CreateUser' component={CreateUser} />
             <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='ManageProduct' component={ManageProduct} />
+            <Stack.Screen name='CreateProduct' component={CreateProduct} />
           </Stack.Group>
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
             <Stack.Screen name='Menu' component={Menu} />

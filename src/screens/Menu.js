@@ -24,7 +24,7 @@ export default function ({ navigation }) {
     {
       name: 'Adicionar Produto',
       isVisible: user?.store,
-      onPress: () => navigation.navigate('AddProduct', { store: user.store }),
+      onPress: () => navigation.navigate('CreateProduct', { store: user.store }),
     },
     {
       name: 'Controlar Produtos',

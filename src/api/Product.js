@@ -12,8 +12,13 @@ function update(token, _id, productId, query) {
   return Axios.put(`/store/${_id}/product/${productId}`, query, { headers: { Authorization: token } });
 }
 
+function create(token, _id, query) {
+  return Axios.post(`/store/${_id}/product`, query, { headers: { Authorization: token } });
+}
+
 export default {
   searchByStore,
   searchByCategory,
   update,
+  create,
 };
