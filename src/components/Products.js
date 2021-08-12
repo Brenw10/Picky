@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
-export default function ({ storeId, name, children, columns, height }) {
+export default function ({ storeId, name, children, columns, height, editable }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function ({ storeId, name, children, columns, height }) {
   function renderProducts({ item }) {
     return (
       <View style={{ ...styles.row, flex: 1 / columns }}>
-        <ProductCard product={item} height={height} />
+        <ProductCard product={item} height={height} storeId={storeId} editable={editable} />
       </View>
     );
   }

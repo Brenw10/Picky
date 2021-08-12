@@ -22,7 +22,17 @@ export default function ({ navigation }) {
       onPress: () => navigation.navigate('Login'),
     },
     {
-      name: 'Sair da Conta',
+      name: 'Adicionar Produto',
+      isVisible: user?.store,
+      onPress: () => navigation.navigate('AddProduct', { store: user.store }),
+    },
+    {
+      name: 'Controlar Produtos',
+      isVisible: user?.store,
+      onPress: () => navigation.navigate('ManageProduct', { store: user.store }),
+    },
+    {
+      name: `Sair de ${user?.name?.split(' ')[0]}`,
       isVisible: token,
       onPress: () => {
         setToken(false);
@@ -47,11 +57,11 @@ export default function ({ navigation }) {
       );
   }
 
-  function renderUser() {
+  function renderStore() {
     return (
       <>
-        <Text style={styles.welcomeText}>BEM-VINDO</Text>
-        <Text style={styles.userText}>{user.name}</Text>
+        <Text style={styles.welcomeText}>LOJA</Text>
+        <Text style={styles.userText}>{user.store.name}</Text>
       </>
     );
   }
@@ -62,7 +72,7 @@ export default function ({ navigation }) {
         <EvilIcons name="close" size={35} color="#444" />
       </TouchableOpacity>
       <Text style={styles.closeText}>FECHAR</Text>
-      {user && renderUser()}
+      {user?.store && renderStore()}
       <View style={styles.linkContainer}>
         {renderLinks()}
       </View>

@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import ImageService from '../services/Image';
+import { Switch } from 'react-native-paper';
+import Product from '../api/Product';
+import { useUserToken } from '../contexts/UserToken';
+import { useAlert } from '../contexts/Alert';
 
-export default function ({ product, width, height, onPress }) {
+export default function ({ storeId, product, width, height, onPress, editable }) {
+  const { token } = useUserToken();
+  const { setContent } = useAlert();
+  const [quantity, setQuantity] = useState(!!product.quantity);
+
+  function onSwitchToogle() {
+    Product.update(token, storeId, product._id, { quantity: 1 * !quantity })
+      .then(() => setContent('Produto alterado com sucesso'))
+      .catch(() => setQuantity(!quantity));
+    setQuantity(!quantity);
+  };
+
+  function renderActiveSwitch() {
+    return (
+      <Switch value={quantity} color='#009688'
+        onValueChange={() => onSwitchToogle()} />
+    );
+  }
+
   return (
     <TouchableOpacity style={{ ...styles.container, width, height }}
       onPress={onPress} disabled={!onPress}>
@@ -13,6 +35,7 @@ export default function ({ product, width, height, onPress }) {
       </ImageBackground>
       <View style={styles.detailContainer}>
         <Text style={styles.title}>{product.name}</Text>
+        {editable && renderActiveSwitch()}
       </View>
     </TouchableOpacity>
   );
