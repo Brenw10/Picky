@@ -24,7 +24,7 @@ export default function ({ navigation }) {
   }, []);
 
   useEffect(() => {
-    const query = { city: city?._id, name: search, };
+    const query = { city: city?._id, name: search, 'products.quantity': 1 };
     Store.search(query).then(({ data }) => setStores(data));
   }, [city, search]);
 
