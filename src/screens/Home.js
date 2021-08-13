@@ -1,76 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, View } from 'react-native';
-import CategoryCard from '../components/CategoryCard';
+import React, { useState } from 'react';
+import { ScrollView } from 'react-native';
 import Header from '../components/Header';
 import SectionSubtitle from '../components/SectionSubtitle';
-import ProductCard from '../components/ProductCard';
-import Category from '../api/Category';
-import City from '../api/City';
 import SectionTitle from '../components/SectionTitle';
-import Store from '../api/Store';
-import Dropdown from '../components/Dropdown';
 import Searchbar from '../components/Searchbar';
+import Categories from '../components/Categories';
+import CitySelector from '../components/CitySelector';
+import Stores from '../components/Stores';
 
 export default function ({ navigation }) {
-  const [cities, setCities] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [stores, setStores] = useState([]);
-  const [city, setCity] = useState();
+  const [city, setCity] = useState({});
   const [search, setSearch] = useState();
-
-  useEffect(() => {
-    City.getAll().then(({ data }) => setCities(data));
-    Category.getAll().then(({ data }) => setCategories(data));
-  }, []);
-
-  useEffect(() => {
-    const query = { city: city?._id, name: search, 'products.quantity': 1 };
-    Store.search(query).then(({ data }) => setStores(data));
-  }, [city, search]);
-
-  function renderCategories() {
-    return categories.map(category =>
-      <CategoryCard
-        key={category._id}
-        category={category}
-        onPress={() => navigation.navigate('Category', { category, city })}
-        width={100} height={100} />
-    );
-  }
-
-  function renderProducts(store) {
-    return store.products.map(product =>
-      <ProductCard
-        key={product._id}
-        product={product}
-        width={150} height={200}
-        onPress={() => navigation.navigate('Store', { store, search: product.name })}
-      />
-    );
-  }
-
-  function renderStores() {
-    return stores.map(store =>
-      <View key={store._id}>
-        <SectionSubtitle leftIcon='shop'
-          onPress={() => navigation.navigate('Store', { store })}>
-          {store.name}, {store.district}
-        </SectionSubtitle>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {renderProducts(store)}
-        </ScrollView>
-      </View>
-    );
-  }
 
   return (
     <>
       <Header title='Página Inicial' navigation={navigation}>
-        <Dropdown
-          items={cities}
-          setSelected={setCity}
-          displayField='name'
-          text={city?.name || 'Cidades'} />
+        <CitySelector setCity={setCity} city={city} />
       </Header>
 
       <ScrollView>
@@ -78,11 +23,13 @@ export default function ({ navigation }) {
 
         <SectionSubtitle>Categorias</SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {renderCategories()}
+          <Categories onPress={category => navigation.navigate('Category', { category, city })} />
         </ScrollView>
 
         <SectionTitle>LOJAS</SectionTitle>
-        {renderStores()}
+        <Stores cityId={city._id} name={search} productQuantity={1}
+          onPress={(store, search) => navigation.navigate('Store', { store, search })}
+        />
       </ScrollView>
     </>
   );
