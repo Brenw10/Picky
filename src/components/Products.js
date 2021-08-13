@@ -7,8 +7,8 @@ export default function ({ storeId, name, children, columns, height, minQuantity
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const query = { 'products.name': name, 'products.quantity': minQuantity };
-    Product.searchByStore(storeId, query).then(({ data }) => setProducts(data));
+    const query = { _id: storeId, 'products.name': name, 'products.quantity': minQuantity };
+    Product.search(query).then(({ data }) => setProducts(data));
   }, [name]);
 
   function renderProducts({ item }) {
