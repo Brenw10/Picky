@@ -23,7 +23,7 @@ export default function ({ navigation, route }) {
   function onSelectImage() {
     launchImageLibrary(
       { includeBase64: true, mediaType: 'photo' },
-      data => setImage(data.assets[0].base64)
+      data => setImage(data?.assets?.[0]?.base64)
     );
   }
 
