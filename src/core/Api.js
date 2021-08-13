@@ -1,2 +1,4 @@
+import { API_URL } from '@env';
+
 export const GOOGLE_MAPS_SEARCH = 'https://www.google.com/maps/place/';
-export const PICKY_SERVER = 'http://10.0.2.2:3000/';
+export const PICKY_SERVER = API_URL;
