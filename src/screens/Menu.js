@@ -87,10 +87,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   welcomeText: {
-    fontFamily: 'AirbnbCereal-Medium',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Medium' : 'AirbnbCereal-Medium',
   },
   userText: {
-    fontFamily: 'AirbnbCereal-Light',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Medium' : 'AirbnbCereal-Medium',
   },
   closeText: {
     fontSize: 8,
@@ -105,6 +105,6 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   linkText: {
-    fontFamily: 'AirbnbCereal-Medium',
+    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Medium' : 'AirbnbCereal-Medium',
   },
 });

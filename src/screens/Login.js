@@ -31,7 +31,7 @@ export default function ({ navigation }) {
       <Header title='Acessar Usuário' navigation={navigation} />
       <ScrollView contentContainerStyle={styles.inputContainer}>
         <Input label='Email' value={email} onChangeText={text => setEmail(text)}
-          placeholder='example@example.com'
+          placeholder='example@example.com' autoCapitalize='none'
           leftIcon={<FontAwesome name='envelope-o' size={21} color='#87939e' />}
         />
         <Input label='Senha' value={password} onChangeText={text => setPassword(text)}
