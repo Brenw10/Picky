@@ -4,11 +4,17 @@ import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
 export default function (props) {
-  const { header, columns, height, storeId, name, quantity, editable } = props;
+  const { header, columns, height, storeId, cityId, categoryId, name, quantity, editable } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const query = { _id: storeId, 'products.name': name, 'products.quantity': quantity };
+    const query = {
+      _id: storeId,
+      city: cityId,
+      'products.name': name,
+      'products.quantity': quantity,
+      'products.category': categoryId,
+    };
     Product.search(query).then(({ data }) => setProducts(data));
   }, [props]);
 
