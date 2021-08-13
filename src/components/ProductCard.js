@@ -26,7 +26,7 @@ export default function ({ storeId, product, width, height, onPress, editable })
 
   return (
     <TouchableOpacity style={{ ...styles.container, width, height }}
-      onPress={onPress} disabled={!onPress}>
+      onPress={() => onPress(product)} disabled={!onPress}>
       <ImageBackground source={{ uri: ImageService.getUrlFromPath(product.image) }} style={styles.image} resizeMode='contain'>
         <View style={styles.priceContainer}>
           <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>

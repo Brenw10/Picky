@@ -28,7 +28,7 @@ export default function ({ navigation }) {
 
         <SectionTitle>LOJAS</SectionTitle>
         <Stores cityId={city._id} name={search} productQuantity={1}
-          onPress={(store, search) => navigation.navigate('Store', { store, search })}
+          onPress={(store, product) => navigation.navigate('Store', { store, search: product?.name })}
         />
       </ScrollView>
     </>

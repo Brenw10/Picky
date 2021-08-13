@@ -29,7 +29,7 @@ export default function (props) {
               key={product._id}
               product={product}
               width={150} height={200}
-              onPress={() => onPress(store, product.name)}
+              onPress={product => onPress(store, product)}
             />
           )
         }
