@@ -10,10 +10,6 @@ export default function ({ setCity, city }) {
   }, []);
 
   return (
-    <Dropdown
-      items={cities}
-      setSelected={setCity}
-      displayField='name'
-      text={city?.name || 'Cidades'} />
+    <Dropdown items={cities} setSelected={setCity} displayField='name' text={city?.name || 'Cidades'} />
   );
 }

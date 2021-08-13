@@ -20,8 +20,7 @@ export default function ({ setCategory, category }) {
 
   function renderItems() {
     return categories.map((category, index) =>
-      <TouchableOpacity
-        key={category._id}
+      <TouchableOpacity key={category._id}
         style={{ ...styles.item, marginTop: index ? 20 : 0 }}
         onPress={() => onSelect(category)}>
         <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
@@ -34,41 +33,33 @@ export default function ({ setCategory, category }) {
 
   function renderButton() {
     return (
-      <TouchableOpacity
-        style={{ ...styles.item, ...styles.selectedItem }}
-        onPress={() => setVisible(true)}>
-        <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
-          <Image source={{ uri: ImageService.getUrlFromPath(category.image) }} style={styles.image} resizeMode='contain' />
-        </View>
-        <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>{category.name}</Text>
-        <Icon name="chevron-down" size={17} color="#444" />
-      </TouchableOpacity>
-    );
-  }
-
-  function renderDefaultButton() {
-    return (
-      <TouchableOpacity
-        style={{ ...styles.item, ...styles.selectedItem }}
-        onPress={() => setVisible(true)}>
-        <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>Categoria</Text>
+      <TouchableOpacity style={{ ...styles.item, ...styles.selectedItem }} onPress={() => setVisible(true)}>
+        {
+          category &&
+          <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
+            <Image source={{ uri: ImageService.getUrlFromPath(category.image) }} style={styles.image} resizeMode='contain' />
+          </View>
+        }
+        <Text textBreakStrategy='simple' style={{ ...styles.itemText, ...styles.selectedItemText }}>
+          {category?.name || 'Categoria'}
+        </Text>
         <Icon name="chevron-down" size={17} color="#444" />
       </TouchableOpacity>
     );
   }
 
   return (
-    <Menu
-      contentStyle={{ paddingVertical: 15 }}
-      visible={visible}
-      onDismiss={() => setVisible(false)}
-      anchor={category ? renderButton() : renderDefaultButton()}>
+    <Menu contentStyle={styles.menu} visible={visible}
+      onDismiss={() => setVisible(false)} anchor={renderButton()}>
       {renderItems()}
     </Menu>
   );
 }
 
 const styles = StyleSheet.create({
+  menu: {
+    paddingVertical: 15,
+  },
   item: {
     flexDirection: 'row',
     alignItems: 'center',

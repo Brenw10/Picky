@@ -5,14 +5,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function ({ title, children, navigation }) {
-  function renderChildren() {
-    return (
-      <View style={styles.rightContainer}>
-        {children}
-      </View>
-    );
-  }
-
   function renderBackButton() {
     return (
       <TouchableOpacity style={styles.leftButton} onPress={() => navigation.goBack()}>
@@ -36,7 +28,12 @@ export default function ({ title, children, navigation }) {
         <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
         <Text style={styles.title}>{title}</Text>
       </View>
-      {children && renderChildren()}
+      {
+        children &&
+        <View style={styles.rightContainer}>
+          {children}
+        </View>
+      }
     </View>
   );
 }

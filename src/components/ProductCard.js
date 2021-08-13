@@ -18,12 +18,6 @@ export default function ({ storeId, product, width, height, onPress, editable })
     setQuantity(!quantity);
   };
 
-  function renderActiveSwitch() {
-    return (
-      <Switch value={quantity} color='#009688' onValueChange={() => onSwitchToogle()} />
-    );
-  }
-
   return (
     <TouchableOpacity style={{ ...styles.container, width, height }}
       onPress={() => onPress(product)} disabled={!onPress}>
@@ -34,7 +28,10 @@ export default function ({ storeId, product, width, height, onPress, editable })
       </ImageBackground>
       <View style={styles.detailContainer}>
         <Text style={styles.title}>{product.name}</Text>
-        {editable && renderActiveSwitch()}
+        {
+          editable &&
+          <Switch value={quantity} color='#009688' onValueChange={() => onSwitchToogle()} />
+        }
       </View>
     </TouchableOpacity>
   );

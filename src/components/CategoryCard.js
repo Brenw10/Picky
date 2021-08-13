@@ -4,7 +4,7 @@ import ImageService from '../services/Image';
 
 export default function ({ category, width, height, onPress }) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={() => onPress(category)}>
       <View style={{ ...styles.container, width, height }}>
         <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
           <Image

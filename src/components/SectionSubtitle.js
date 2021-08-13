@@ -3,16 +3,12 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
 export default function ({ children, containerStyle, onPress, leftIcon }) {
-  function renderLink() {
-    return <Icon name={leftIcon} size={13} color="#444" style={styles.link} />;
-  }
-  
   return (
-    <TouchableOpacity
-      style={{ ...styles.container, ...containerStyle }}
-      onPress={onPress}
-      disabled={!onPress}>
-      {leftIcon && renderLink()}
+    <TouchableOpacity style={{ ...styles.container, ...containerStyle }} onPress={onPress} disabled={!onPress}>
+      {
+        leftIcon &&
+        <Icon name={leftIcon} size={13} color="#444" style={styles.link} />
+      }
       <Text style={styles.text}>{children}</Text>
       <Icon name="chevron-thin-right" size={10} color="#444" />
     </TouchableOpacity>

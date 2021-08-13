@@ -32,10 +32,7 @@ export default function ({ items, setSelected, displayField, text }) {
   }
 
   return (
-    <Menu
-      visible={visible}
-      onDismiss={() => setVisible(false)}
-      anchor={renderButton()}>
+    <Menu visible={visible} onDismiss={() => setVisible(false)} anchor={renderButton()}>
       {renderItems()}
     </Menu>
   );

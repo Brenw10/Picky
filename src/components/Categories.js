@@ -13,7 +13,7 @@ export default function ({ onPress }) {
     <CategoryCard
       key={category._id}
       category={category}
-      onPress={() => onPress(category)}
+      onPress={category => onPress(category)}
       width={100} height={100} />
   );
 }
