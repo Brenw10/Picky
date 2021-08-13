@@ -20,8 +20,7 @@ export default function ({ storeId, product, width, height, onPress, editable })
 
   function renderActiveSwitch() {
     return (
-      <Switch value={quantity} color='#009688'
-        onValueChange={() => onSwitchToogle()} />
+      <Switch value={quantity} color='#009688' onValueChange={() => onSwitchToogle()} />
     );
   }
 

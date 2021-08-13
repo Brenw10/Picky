@@ -3,32 +3,31 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
-export default function ({ storeId, name, children, columns, height, minQuantity, editable }) {
+export default function (props) {
+  const { header, columns, height, storeId, name, quantity, editable } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const query = { _id: storeId, 'products.name': name, 'products.quantity': minQuantity };
+    const query = { _id: storeId, 'products.name': name, 'products.quantity': quantity };
     Product.search(query).then(({ data }) => setProducts(data));
-  }, [name]);
+  }, [props]);
 
   function renderProducts({ item }) {
     return (
       <View style={{ ...styles.row, flex: 1 / columns }}>
-        <ProductCard product={item} height={height} storeId={storeId} editable={editable} />
+        <ProductCard storeId={storeId} editable={editable} product={item} height={height} />
       </View>
     );
   }
 
   return (
-    <>
-      <FlatList
-        data={products}
-        renderItem={renderProducts}
-        numColumns={columns}
-        keyExtractor={item => item._id}
-        ListHeaderComponent={children}
-      />
-    </>
+    <FlatList
+      data={products}
+      renderItem={renderProducts}
+      numColumns={columns}
+      keyExtractor={item => item._id}
+      ListHeaderComponent={header}
+    />
   );
 }
 

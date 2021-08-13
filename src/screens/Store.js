@@ -20,13 +20,15 @@ export default function ({ route, navigation }) {
           Google Maps
         </Icon.Button>
       </Header>
-      <Products storeId={store._id} name={search} columns={3} height={180} minQuantity={1}>
-        <>
-          <StoreInformation store={store} />
-          <SectionTitle>Produtos</SectionTitle>
-          <Searchbar placeholder='Buscar Produtos' search={search} onSearch={setSearch} />
-        </>
-      </Products>
+      <Products columns={3} height={180} storeId={store._id} name={search} quantity={1}
+        header={
+          <>
+            <StoreInformation store={store} />
+            <SectionTitle>Produtos</SectionTitle>
+            <Searchbar placeholder='Buscar Produtos' search={search} onSearch={setSearch} />
+          </>
+        }
+      />
     </>
   );
 }
