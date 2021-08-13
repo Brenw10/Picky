@@ -10,9 +10,9 @@ export default function ({ navigation, route }) {
   return (
     <>
       <Header title='Controlar Produtos' navigation={navigation} />
-      <Products storeId={store._id} name={search} columns={3} height={180} editable={true}>
-        <Searchbar placeholder='Buscar Produtos' search={search} onSearch={setSearch} />
-      </Products>
+      <Products storeId={store._id} name={search} columns={3} height={180} editable={true}
+        header={<Searchbar placeholder='Buscar Produtos' search={search} onSearch={setSearch} />}
+      />
     </>
   )
 };
