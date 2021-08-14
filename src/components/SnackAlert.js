@@ -7,7 +7,10 @@ export default function () {
   const { content, setContent } = useAlert();
 
   return (
-    <Snackbar style={styles.bar} visible={content} onDismiss={() => setContent()}>{content}</Snackbar>
+    <Snackbar style={styles.bar} visible={content} onDismiss={() => setContent()}
+      action={{ label: 'Fechar', onPress: () => setContent() }}>
+      {content}
+    </Snackbar>
   );
 }
 
