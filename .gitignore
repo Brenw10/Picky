@@ -64,3 +64,4 @@ yarn.lock
 *.lock
 
 .env
+!picky.keystore

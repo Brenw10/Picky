@@ -1,4 +1,4 @@
-package com.app.picky;
+package com.pick.picky;
 
 import com.facebook.react.ReactActivity;
 

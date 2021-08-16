@@ -131,7 +131,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.app.picky"
+        applicationId "com.pick.picky"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -152,6 +152,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('PICKY_UPLOAD_STORE_FILE')) {
+                storeFile file(PICKY_UPLOAD_STORE_FILE)
+                storePassword PICKY_UPLOAD_STORE_PASSWORD
+                keyAlias PICKY_UPLOAD_KEY_ALIAS
+                keyPassword PICKY_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -163,6 +171,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 
