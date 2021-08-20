@@ -11,12 +11,16 @@ export default function ({ route, navigation }) {
   const { store } = route.params;
   const [search, setSearch] = useState(route.params.search);
 
+  function onGoogleMapsPress() {
+    GoogleMaps.search(`${store.street},${store.number} - ${store.city}`)
+  }
+
   return (
     <>
       <Header title='Loja' navigation={navigation}>
         <Icon.Button name='map-o' backgroundColor='rgba(0,0,0,0)'
           underlayColor='transparent' color='#4a4a4a'
-          onPress={() => GoogleMaps.search(`${store.street},${store.number}`)}>
+          onPress={() => onGoogleMapsPress()}>
           Google Maps
         </Icon.Button>
       </Header>

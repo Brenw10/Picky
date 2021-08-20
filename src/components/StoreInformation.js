@@ -4,13 +4,18 @@ import { Button } from 'react-native-paper';
 import GoogleMaps from '../services/GoogleMaps';
 
 export default function ({ store }) {
+
+  function onGoogleMapsPress() {
+    GoogleMaps.search(`${store.street},${store.number} - ${store.city}`)
+  }
+
   return (
     <View>
       <Text style={styles.title}>{store.name.toUpperCase()}</Text>
       <Text style={styles.description}>
         {store.street + ', ' + store.number} - {store.district + ' - ' + store.city}
       </Text>
-      <Button icon='map' onPress={() => GoogleMaps.search(`${store.street},${store.number}`)}>
+      <Button icon='map' onPress={() => onGoogleMapsPress()}>
         Abrir no Google Maps
       </Button>
     </View>
