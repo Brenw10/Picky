@@ -15,7 +15,7 @@ export default function ({ title, children, navigation }) {
 
   function renderMenu() {
     return (
-      <TouchableOpacity style={styles.leftButton} onPress={() => navigation.navigate('Menu')}>
+      <TouchableOpacity style={styles.leftButton} onPress={() => navigation.navigate('MainMenu')}>
         <Ionicons name="md-menu-outline" size={28} color="#444" />
       </TouchableOpacity>
     );

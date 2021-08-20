@@ -5,6 +5,7 @@ import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
 import { useEffect, useState } from 'react';
 import User from '../api/User';
+import Menu from '../components/Menu';
 
 export default function ({ navigation }) {
   const [user, setUser] = useState();
@@ -33,7 +34,7 @@ export default function ({ navigation }) {
     },
     {
       name: `Sair de ${user?.name?.split(' ')[0]}`,
-      isVisible: token,
+      isVisible: user?.name,
       onPress: () => {
         setToken(false);
         setUser();
@@ -46,35 +47,23 @@ export default function ({ navigation }) {
     if (token) User.getMyself(token).then(({ data }) => setUser(data));
   }, [token]);
 
-  function renderLinks() {
-    return links
-      .filter(link => link.isVisible)
-      .map((link, index) =>
-        <TouchableOpacity key={index} style={styles.link}
-          onPress={() => link.onPress()}>
-          <Text style={styles.linkText}>{link.name}</Text>
-        </TouchableOpacity>
-      );
-  }
-
-  function renderStore() {
-    return (
-      <>
-        <Text style={styles.welcomeText}>LOJA</Text>
-        <Text style={styles.userText}>{user.store.name}</Text>
-      </>
-    );
-  }
-
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <EvilIcons name="close" size={35} color="#444" />
       </TouchableOpacity>
       <Text style={styles.closeText}>FECHAR</Text>
-      {user?.store && renderStore()}
-      <View style={styles.linkContainer}>
-        {renderLinks()}
+      {
+        user?.store &&
+        <>
+          <Text style={styles.welcomeText}>LOJA</Text>
+          <Text style={styles.userText}>{user.store.name}</Text>
+        </>
+      }
+      <View style={styles.menuContainer}>
+        <Menu items={links} onPress={item => item.onPress(item)}
+          onVisible={item => item.isVisible} onText={item => item.name}
+        />
       </View>
     </View>
   );
@@ -96,15 +85,8 @@ const styles = StyleSheet.create({
     fontSize: 8,
     marginBottom: 20,
   },
-  linkContainer: {
+  menuContainer: {
     flex: 1,
     justifyContent: 'center',
-  },
-  link: {
-    alignItems: 'center',
-    padding: 15,
-  },
-  linkText: {
-    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Medium' : 'AirbnbCereal-Medium',
   },
 });

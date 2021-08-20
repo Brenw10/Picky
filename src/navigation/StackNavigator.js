@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import Category from '../screens/Category';
 import Store from '../screens/Store';
-import Menu from '../screens/Menu';
+import MainMenu from '../screens/MainMenu';
 import CreateUser from '../screens/CreateUser';
 import Login from '../screens/Login';
 import ManageProduct from '../screens/ManageProduct';
@@ -35,7 +35,7 @@ export default function () {
             <Stack.Screen name='CreateProduct' component={CreateProduct} />
           </Stack.Group>
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
-            <Stack.Screen name='Menu' component={Menu} />
+            <Stack.Screen name='MainMenu' component={MainMenu} />
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
