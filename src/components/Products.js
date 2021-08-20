@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
 export default function (props) {
-  const { header, columns, height, storeId, cityId, categoryId, name, quantity, editable, onPress } = props;
+  const { header, columns, height, storeId, cityId, categoryId, name, quantity, onPress } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -21,11 +21,7 @@ export default function (props) {
   function renderProducts({ item }) {
     return (
       <View style={{ ...styles.row, flex: 1 / columns }}>
-        <ProductCard
-          storeId={storeId} editable={editable}
-          product={item} height={height}
-          onPress={onPress}
-        />
+        <ProductCard product={item} height={height} onPress={onPress} />
       </View>
     );
   }
