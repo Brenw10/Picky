@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CategoryCard from '../components/CategoryCard';
+import CategoryCard from './CategoryCard';
 import Category from '../api/Category';
 
 export default function ({ onPress }) {

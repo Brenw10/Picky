@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import SectionSubtitle from '../components/SectionSubtitle';
 import SectionTitle from '../components/SectionTitle';
 import Searchbar from '../components/Searchbar';
-import Categories from '../components/Categories';
+import CategoryList from '../components/CategoryList';
 import CitySelector from '../components/CitySelector';
 import Stores from '../components/Stores';
 
@@ -23,7 +23,7 @@ export default function ({ navigation }) {
 
         <SectionSubtitle>Categorias</SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <Categories onPress={category => navigation.navigate('Category', { category, city })} />
+          <CategoryList onPress={category => navigation.navigate('Category', { category, city })} />
         </ScrollView>
 
         <SectionTitle>LOJAS</SectionTitle>
