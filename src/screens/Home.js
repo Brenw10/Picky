@@ -6,7 +6,7 @@ import SectionTitle from '../components/SectionTitle';
 import Searchbar from '../components/Searchbar';
 import CategoryList from '../components/CategoryList';
 import CitySelector from '../components/CitySelector';
-import Stores from '../components/Stores';
+import StoreList from '../components/StoreList';
 
 export default function ({ navigation }) {
   const [city, setCity] = useState({});
@@ -29,7 +29,7 @@ export default function ({ navigation }) {
         </ScrollView>
 
         <SectionTitle>LOJAS</SectionTitle>
-        <Stores cityId={city._id} name={search} productQuantity={1}
+        <StoreList cityId={city._id} name={search} productQuantity={1}
           onPress={(store, product) => navigation.navigate('Store', { store, search: product?.name })}
         />
       </ScrollView>
