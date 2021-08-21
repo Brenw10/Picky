@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
 import ProductEdit from '../components/ProductEdit';
-import Products from '../components/Products';
+import ProductList from '../components/ProductList';
 import Searchbar from '../components/Searchbar';
 import { Modalize } from 'react-native-modalize';
 import SectionTitle from '../components/SectionTitle';
@@ -21,7 +21,7 @@ export default function ({ navigation, route }) {
   return (
     <>
       <Header title='Controlar Produtos' navigation={navigation} />
-      <Products storeId={store._id} name={search} columns={3} height={180} onPress={setProduct}
+      <ProductList storeId={store._id} name={search} columns={3} height={180} onPress={setProduct}
         header={<Searchbar placeholder='Buscar Produtos' search={search} onSearch={setSearch} />}
       />
 

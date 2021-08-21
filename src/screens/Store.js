@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import GoogleMaps from '../services/GoogleMaps';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Products from '../components/Products';
+import ProductList from '../components/ProductList';
 import StoreInformation from '../components/StoreInformation';
 import SectionTitle from '../components/SectionTitle';
 import Searchbar from '../components/Searchbar';
@@ -24,7 +24,7 @@ export default function ({ route, navigation }) {
           Google Maps
         </Icon.Button>
       </Header>
-      <Products columns={3} height={180} storeId={store._id} name={search} quantity={1}
+      <ProductList columns={3} height={180} storeId={store._id} name={search} quantity={1}
         header={
           <>
             <StoreInformation store={store} />
