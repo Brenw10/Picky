@@ -23,7 +23,9 @@ export default function ({ navigation }) {
 
         <SectionSubtitle>Categorias</SectionSubtitle>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <CategoryList onPress={category => navigation.navigate('Category', { category, city })} />
+          <CategoryList width={100} height={100}
+            onPress={category => navigation.navigate('Category', { category, city })}
+          />
         </ScrollView>
 
         <SectionTitle>LOJAS</SectionTitle>
