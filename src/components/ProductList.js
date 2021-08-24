@@ -8,13 +8,7 @@ export default function (props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const query = {
-      _id: storeId,
-      city: cityId,
-      'products.name': name,
-      'products.category': categoryId,
-    };
-    Product.search(query).then(({ data }) => setProducts(data));
+    Product.search(storeId, cityId, name, categoryId).then(({ data }) => setProducts(data));
   }, [props]);
 
   function renderProducts({ item }) {

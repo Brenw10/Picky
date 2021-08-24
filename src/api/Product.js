@@ -1,7 +1,7 @@
 import Axios from '../config/Axios';
 
-function search(query) {
-  return Axios.get('/product/search', { params: query });
+function search(_store, city, name, category) {
+  return Axios.get('/product/search', { params: { _store, city, name, category } });
 }
 
 function create(token, _store, query) {
