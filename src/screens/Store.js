@@ -24,7 +24,7 @@ export default function ({ route, navigation }) {
           Google Maps
         </Icon.Button>
       </Header>
-      <ProductList columns={3} height={180} storeId={store._id} name={search} quantity={1}
+      <ProductList columns={3} height={180} storeId={store._id} name={search}
         header={
           <>
             <StoreInformation store={store} />

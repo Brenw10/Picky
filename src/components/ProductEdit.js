@@ -1,41 +1,24 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
 import Product from '../api/Product';
 import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
-import InputSpinner from "react-native-input-spinner";
+import { Button } from 'react-native-elements';
 
 export default function ({ product, setProduct }) {
   const { token } = useUserToken();
   const { setContent } = useAlert();
 
-  async function onChangeQuantity(newQuantity) {
-    const quantity = product.quantity;
+  async function onDelete() {
     try {
-      setProduct({ ...product, quantity: newQuantity });
-      await Product.update(token, product.store._id, product._id, { quantity: newQuantity });
-      setContent('Produto alterado com sucesso');
+      await Product.remove(token, product.store._id, product._id);
+      setContent('Produto removido com sucesso');
+      setProduct();
     } catch {
-      setProduct({ ...product, quantity: quantity });
-      setContent('Falha ao alterar produto');
+      setContent('Erro ao remover produto');
     }
-  };
+  }
 
   return (
-    <View style={styles.horizontalContainer}>
-      <Text style={styles.itemText}>Quantidade disponível</Text>
-      <InputSpinner min={0} value={product?.quantity} onChange={quantity => onChangeQuantity(quantity)} />
-    </View>
+    <Button title='Deletar Produto' onPress={() => onDelete()} />
   )
 };
-
-const styles = StyleSheet.create({
-  horizontalContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  itemText: {
-    alignSelf: 'center',
-    fontFamily: Platform.OS === 'ios' ? 'Airbnb Cereal App Light' : 'AirbnbCereal-Light',
-  },
-});

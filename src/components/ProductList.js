@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
 export default function (props) {
-  const { header, columns, height, storeId, cityId, categoryId, name, quantity, onPress } = props;
+  const { header, columns, height, storeId, cityId, categoryId, name, onPress } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,6 @@ export default function (props) {
       _id: storeId,
       city: cityId,
       'products.name': name,
-      'products.quantity': quantity,
       'products.category': categoryId,
     };
     Product.search(query).then(({ data }) => setProducts(data));

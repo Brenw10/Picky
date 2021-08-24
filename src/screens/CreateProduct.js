@@ -18,7 +18,6 @@ export default function ({ navigation, route }) {
   const [image, setImage] = useState();
   const [price, setPrice] = useState();
   const [category, setCategory] = useState();
-  const [quantity] = useState(0);
 
   function onSelectImage() {
     launchImageLibrary(
@@ -29,7 +28,7 @@ export default function ({ navigation, route }) {
 
   async function onSubmit() {
     try {
-      await Product.create(token, store._id, { name, image, price, quantity, category: category._id });
+      await Product.create(token, store._id, { name, image, price, category: category._id });
       setContent('Produto adicionado com sucesso');
       navigation.goBack();
     } catch (err) {

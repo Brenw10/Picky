@@ -5,18 +5,14 @@ import ProductCard from '../components/ProductCard';
 import Store from '../api/Store';
 
 export default function (props) {
-  const { cityId, name, productQuantity, onPress } = props;
+  const { cityId, name, onPress } = props;
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    const query = {
-      city: cityId,
-      name,
-      'products.quantity': productQuantity,
-    };
+    const query = { city: cityId, name };
     Store.search(query).then(({ data }) => setStores(data));
   }, [props]);
-  
+
   return stores.map(store =>
     <View key={store._id}>
       <SectionSubtitle leftIcon='shop' onPress={() => onPress(store)}>
