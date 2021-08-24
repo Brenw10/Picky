@@ -4,8 +4,8 @@ function search(query) {
   return Axios.get('/product/search', { params: query });
 }
 
-function create(token, _id, query) {
-  return Axios.post(`/store/${_id}/product`, query, { headers: { Authorization: token } });
+function create(token, _store, query) {
+  return Axios.post(`/store/${_store}/product`, query, { headers: { Authorization: token } });
 }
 
 function remove(token, _store, _product) {
