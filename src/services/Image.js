@@ -1,5 +1,5 @@
 import { PICKY_SERVER } from '../core/Api';
-import { isUrl } from '../services/Util';
+import { isUrl } from '../services/String';
 
 function getUrlFromPath(path) {
   if (isUrl(path)) return path;

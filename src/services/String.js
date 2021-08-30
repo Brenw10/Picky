@@ -3,6 +3,11 @@ function isUrl(string) {
   return regexp.test(string);
 }
 
+function toFloat(string) {
+  return parseFloat(string.replace(/\./g, '').replace(',', '.'));
+}
+
 module.exports = {
   isUrl,
+  toFloat,
 };
