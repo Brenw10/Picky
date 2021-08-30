@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   description: {
-    fontSize: 13,
+    fontSize: 12,
     color: '#333',
     fontFamily: 'Poppins-Thin',
   },
