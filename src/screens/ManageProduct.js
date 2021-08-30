@@ -24,10 +24,8 @@ export default function ({ navigation, route }) {
       <ProductList storeId={store._id} name={search} columns={3} height={180} onPress={setProduct}
         header={<Searchbar placeholder='Buscar Produtos' search={search} onSearch={setSearch} />}
       />
-
       <Modalize ref={modalizeRef} childrenStyle={styles.modal}
-        HeaderComponent={<SectionTitle>Modificar Produto</SectionTitle>}
-      >
+        HeaderComponent={<SectionTitle>Modificar Produto</SectionTitle>}>
         <ProductEdit product={product} setProduct={setProduct} />
       </Modalize>
     </>
