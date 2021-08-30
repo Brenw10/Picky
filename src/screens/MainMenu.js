@@ -13,6 +13,11 @@ export default function ({ navigation }) {
   const { setContent } = useAlert();
   const links = [
     {
+      name: 'Criar Loja',
+      isVisible: user?.isAdmin,
+      onPress: () => navigation.navigate('StoreCreation'),
+    },
+    {
       name: 'Criar Conta',
       isVisible: !token,
       onPress: () => navigation.navigate('CreateUser'),
@@ -33,7 +38,7 @@ export default function ({ navigation }) {
       onPress: () => navigation.navigate('ManageProduct', { store: user.store }),
     },
     {
-      name: `Sair de ${user?.name?.split(' ')[0]}`,
+      name: `Sair de ${user?.name?.split(' ')?.[0]}`,
       isVisible: user?.name,
       onPress: () => {
         setToken(false);
