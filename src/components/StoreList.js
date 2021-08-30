@@ -5,11 +5,11 @@ import ProductCard from '../components/ProductCard';
 import Store from '../api/Store';
 
 export default function (props) {
-  const { cityId, name, onPress } = props;
+  const { cityId, name, minProducts, onPress } = props;
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    const query = { city: cityId, name };
+    const query = { city: cityId, name, minProducts };
     Store.search(query).then(({ data }) => setStores(data));
   }, [props]);
 
