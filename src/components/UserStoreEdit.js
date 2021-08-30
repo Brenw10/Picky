@@ -32,7 +32,7 @@ export default function ({ user, onSuccess }) {
   return (
     <ScrollView>
       <CitySelector city={city} setCity={setCity} />
-      <Searchbar placeholder='Procurar Loja' search={search} setSearch={setSearch} />
+      <Searchbar placeholder='Procurar Loja' search={search} onSearch={setSearch} />
       {
         stores.map(store =>
           <ListItem key={store._id} onPress={() => setUserStore(store)}>
