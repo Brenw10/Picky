@@ -22,6 +22,7 @@ export default function (props) {
             <ListItem.Content>
               <ListItem.Title>{user.name}</ListItem.Title>
               <Text style={styles.description}>{user.email}</Text>
+              {user.store && <Text style={styles.description}>Loja: {user.store.name}</Text>}
             </ListItem.Content>
           </ListItem>
         )
