@@ -18,6 +18,11 @@ export default function ({ navigation }) {
       onPress: () => navigation.navigate('StoreCreation'),
     },
     {
+      name: 'Buscar Usuário',
+      isVisible: user?.isAdmin,
+      onPress: () => navigation.navigate('UserSearch'),
+    },
+    {
       name: 'Criar Conta',
       isVisible: !token,
       onPress: () => navigation.navigate('CreateUser'),
