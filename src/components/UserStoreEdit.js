@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import Searchbar from './Searchbar';
 import Store from '../api/Store';
 import { ListItem } from 'react-native-elements';
@@ -7,6 +7,7 @@ import CitySelector from './CitySelector';
 import User from '../api/User';
 import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
+import { Button } from 'react-native-elements';
 
 export default function ({ user, onSuccess }) {
   const [search, setSearch] = useState();
@@ -21,8 +22,8 @@ export default function ({ user, onSuccess }) {
 
   async function setUserStore(store) {
     try {
-      await User.setStore(token, user._id, store._id);
-      setContent('Nova loja definida com sucesso');
+      await User.setStore(token, user._id, store?._id);
+      setContent('Alteração de Loja definida com sucesso');
       onSuccess({ ...user, store });
     } catch {
       setContent('Erro ao salvar loja ao usuário');
@@ -30,9 +31,10 @@ export default function ({ user, onSuccess }) {
   }
 
   return (
-    <ScrollView>
-      <CitySelector city={city} setCity={setCity} />
+    <>
+      <Button title='Desvincular Loja' onPress={() => setUserStore()} containerStyle={styles.removeButton} />
       <Searchbar placeholder='Procurar Loja' search={search} onSearch={setSearch} />
+      <CitySelector city={city} setCity={setCity} />
       {
         stores.map(store =>
           <ListItem key={store._id} onPress={() => setUserStore(store)}>
@@ -43,13 +45,16 @@ export default function ({ user, onSuccess }) {
           </ListItem>
         )
       }
-    </ScrollView>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
+  removeButton: {
+    margin: 10,
+  },
   description: {
     paddingLeft: 10,
     color: 'grey'
-  }
+  },
 })
