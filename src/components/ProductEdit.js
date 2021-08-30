@@ -4,7 +4,7 @@ import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
 import { Button } from 'react-native-elements';
 
-export default function ({ product, setProduct }) {
+export default function ({ product, onSuccess }) {
   const { token } = useUserToken();
   const { setContent } = useAlert();
 
@@ -12,7 +12,7 @@ export default function ({ product, setProduct }) {
     try {
       await Product.remove(token, product.store._id, product._id);
       setContent('Produto removido com sucesso');
-      setProduct();
+      onSuccess();
     } catch {
       setContent('Erro ao remover produto');
     }

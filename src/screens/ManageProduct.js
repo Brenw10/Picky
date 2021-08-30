@@ -26,7 +26,7 @@ export default function ({ navigation, route }) {
       />
       <Modalize ref={modalizeRef} childrenStyle={styles.modal}
         HeaderComponent={<SectionTitle>Modificar Produto</SectionTitle>}>
-        <ProductEdit product={product} setProduct={setProduct} />
+        <ProductEdit product={product} onSuccess={() => setProduct()} />
       </Modalize>
     </>
   )
