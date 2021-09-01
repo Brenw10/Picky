@@ -54,12 +54,18 @@ export default function ({ navigation }) {
   ];
 
   useEffect(() => {
-    if (token) {
-      User.getMyself(token)
-        .then(({ data }) => setUser(data))
-        .catch(() => dispatchToken({ type: TOKEN_ACTIONS.CLEAR }));
-    }
+    if (token) loadUser(token);
   }, [token]);
+
+  async function loadUser(token) {
+    try {
+      const { data } = await User.getMyself(token);
+      setUser(data);
+    } catch {
+      dispatchToken({ type: TOKEN_ACTIONS.CLEAR });
+      setContent('Sua sessao expirou');
+    }
+  }
 
   return (
     <View style={styles.container}>
