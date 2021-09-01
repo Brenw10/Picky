@@ -13,12 +13,12 @@ export default function ({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { setContent } = useAlert();
-  const { setToken } = useUserToken();
+  const { dispatchToken, TOKEN_ACTIONS } = useUserToken();
 
   async function login() {
     try {
       const { data } = await Login.getToken(email, password);
-      setToken(data);
+      dispatchToken({ type: TOKEN_ACTIONS.INSERT, payload: data });
       setContent('Sucesso no login');
       navigation.goBack();
     } catch {

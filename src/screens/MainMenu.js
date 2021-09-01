@@ -9,7 +9,7 @@ import Menu from '../components/Menu';
 
 export default function ({ navigation }) {
   const [user, setUser] = useState();
-  const { token, setToken } = useUserToken();
+  const { token, dispatchToken, TOKEN_ACTIONS } = useUserToken();
   const { setContent } = useAlert();
   const links = [
     {
@@ -46,7 +46,7 @@ export default function ({ navigation }) {
       name: `Sair de ${user?.name?.split(' ')?.[0]}`,
       isVisible: user?.name,
       onPress: () => {
-        setToken();
+        dispatchToken({ type: TOKEN_ACTIONS.CLEAR });
         setUser();
         setContent('Você saiu da conta');
       },
@@ -57,7 +57,7 @@ export default function ({ navigation }) {
     if (token) {
       User.getMyself(token)
         .then(({ data }) => setUser(data))
-        .catch(() => setToken());
+        .catch(() => dispatchToken({ type: TOKEN_ACTIONS.CLEAR }));
     }
   }, [token]);
 
