@@ -2,18 +2,16 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import ImageService from '../services/Image';
 
-export default function ({ category, width, height, onPress }) {
+export default function ({ category, containerStyle, onPress }) {
   return (
-    <TouchableOpacity onPress={() => onPress(category)}>
-      <View style={{ ...styles.container, width, height }}>
-        <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
-          <Image
-            source={{ uri: ImageService.getUrlFromPath(category.image) }}
-            style={styles.image}
-            resizeMode='contain' />
-        </View>
-        <Text style={styles.title}>{category.name}</Text>
+    <TouchableOpacity onPress={() => onPress(category)} style={{ ...styles.container, ...containerStyle }}>
+      <View style={{ ...styles.imageContainer, backgroundColor: category.color }}>
+        <Image
+          source={{ uri: ImageService.getUrlFromPath(category.image) }}
+          style={styles.image}
+          resizeMode='contain' />
       </View>
+      <Text style={styles.title}>{category.name}</Text>
     </TouchableOpacity>
   );
 }
@@ -21,8 +19,8 @@ export default function ({ category, width, height, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 5,
     alignItems: 'center',
-    margin: 5,
   },
   imageContainer: {
     flex: 1,

@@ -23,8 +23,7 @@ export default function ({ city, name, minProducts, onPress }) {
         renderItem={({ item }) =>
           <ProductCard product={item}
             containerStyle={styles.product}
-            onPress={product => onPress(store, product)}
-          />
+            onPress={product => onPress(store, product)} />
         }
       />
     </View>

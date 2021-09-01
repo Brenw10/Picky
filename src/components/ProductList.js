@@ -21,8 +21,7 @@ export default function (props) {
         <ProductCard
           product={item}
           containerStyle={{ ...styles.product, flex: 1 / columns, height }}
-          onPress={onPress}
-        />
+          onPress={onPress} />
       }
     />
   );
