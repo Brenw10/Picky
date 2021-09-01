@@ -16,7 +16,7 @@ export default function ({ route, navigation }) {
       <ProductList columns={3} height={180}
         onPress={product => navigation.navigate('Store', { store: product.store, search: product.name })}
         name={search} categoryId={category._id} city={route.params?.city?._id}
-        header={<Searchbar placeholder='Buscar Produtos' onSearch={setSearch} />}
+        HeaderComponent={<Searchbar placeholder='Buscar Produtos' onSearch={setSearch} />}
       />
     </>
   );
