@@ -46,7 +46,7 @@ export default function ({ navigation }) {
       name: `Sair de ${user?.name?.split(' ')?.[0]}`,
       isVisible: user?.name,
       onPress: () => {
-        setToken(false);
+        setToken();
         setUser();
         setContent('Você saiu da conta');
       },
@@ -54,7 +54,11 @@ export default function ({ navigation }) {
   ];
 
   useEffect(() => {
-    if (token) User.getMyself(token).then(({ data }) => setUser(data));
+    if (token) {
+      User.getMyself(token)
+        .then(({ data }) => setUser(data))
+        .catch(() => setToken());
+    }
   }, [token]);
 
   return (
