@@ -9,7 +9,7 @@ import { Button } from 'react-native-elements';
 import Product from '../api/Product';
 import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
-import { toFloat } from '../services/String';
+import String from '../services/String';
 
 export default function ({ navigation, route }) {
   const { store } = route.params;
@@ -29,7 +29,7 @@ export default function ({ navigation, route }) {
 
   async function onSubmit() {
     try {
-      await Product.create(token, store._id, { name, image, price: toFloat(price), category: category._id });
+      await Product.create(token, store._id, { name, image, price: String.toFloat(price), category: category._id });
       setContent('Produto adicionado com sucesso');
       navigation.goBack();
     } catch (err) {

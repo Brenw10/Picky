@@ -7,7 +7,7 @@ function toFloat(string) {
   return parseFloat(string.replace(/\./g, '').replace(',', '.'));
 }
 
-module.exports = {
+export default {
   isUrl,
   toFloat,
 };
