@@ -34,6 +34,5 @@ const styles = StyleSheet.create({
   product: {
     width: Dimensions.get('window').width / 2.5,
     height: 200,
-    paddingHorizontal: 15,
   },
 });

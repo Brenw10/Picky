@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
@@ -20,15 +20,9 @@ export default function (props) {
       renderItem={({ item }) =>
         <ProductCard
           product={item}
-          containerStyle={{ ...styles.product, flex: 1 / columns, height }}
+          containerStyle={{ flex: 1 / columns, height }}
           onPress={onPress} />
       }
     />
   );
 }
-
-const styles = StyleSheet.create({
-  product: {
-    paddingHorizontal: 10,
-  },
-});

@@ -23,6 +23,7 @@ export default function ({ product, containerStyle, onPress }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 10,
   },
   image: {
     flex: 1,
