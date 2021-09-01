@@ -4,18 +4,17 @@ import User from '../api/User';
 import { useUserToken } from '../contexts/UserToken';
 import { ListItem } from 'react-native-elements';
 
-export default function (props) {
-  const { email, headerComponent, onPress } = props;
+export default function ({ HeaderComponent, email, onPress }) {
   const [users, setUsers] = useState([]);
   const { token } = useUserToken();
 
   useEffect(() => {
     User.search(token, { email }).then(({ data }) => setUsers(data));
-  }, [props]);
+  }, [email]);
 
   return (
     <ScrollView>
-      {headerComponent}
+      {HeaderComponent}
       {
         users.map(user =>
           <ListItem key={user._id} onPress={() => onPress(user)}>

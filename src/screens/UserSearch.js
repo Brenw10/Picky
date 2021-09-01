@@ -20,7 +20,7 @@ export default function ({ navigation }) {
     <>
       <Header title='Usuários' navigation={navigation} />
       <UserList email={search} onPress={user => setUser(user)}
-        headerComponent={<Searchbar placeholder='Buscar por Email' search={search} onSearch={setSearch} />}
+        HeaderComponent={<Searchbar placeholder='Buscar por Email' search={search} onSearch={setSearch} />}
       />
       <Modalize ref={modalizeRef}
         HeaderComponent={<SectionTitle>Selecione uma Loja</SectionTitle>}>
