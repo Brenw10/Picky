@@ -5,25 +5,18 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function ({ title, children, navigation }) {
-  function renderBackButton() {
-    return (
-      <TouchableOpacity style={styles.leftButton} onPress={() => navigation.goBack()}>
-        <Entypo name="chevron-thin-left" size={25} color="#444" />
-      </TouchableOpacity>
-    );
-  }
-
-  function renderMenu() {
-    return (
-      <TouchableOpacity style={styles.leftButton} onPress={() => navigation.navigate('MainMenu')}>
-        <Ionicons name="md-menu-outline" size={28} color="#444" />
-      </TouchableOpacity>
-    );
-  }
-
   return (
     <View style={styles.container}>
-      {navigation?.canGoBack() ? renderBackButton() : renderMenu()}
+      {
+        navigation?.canGoBack() ?
+          <TouchableOpacity style={styles.leftButton} onPress={() => navigation.goBack()}>
+            <Entypo name="chevron-thin-left" size={25} color="#444" />
+          </TouchableOpacity>
+          :
+          <TouchableOpacity style={styles.leftButton} onPress={() => navigation.navigate('MainMenu')}>
+            <Ionicons name="md-menu-outline" size={28} color="#444" />
+          </TouchableOpacity>
+      }
       <View style={styles.leftContainer}>
         <Text style={styles.description}>{moment(new Date).locale('pt-br').format('dddd, DD MMMM').toUpperCase()}</Text>
         <Text style={styles.title}>{title}</Text>

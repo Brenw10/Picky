@@ -4,7 +4,6 @@ import { Button } from 'react-native-paper';
 import GoogleMaps from '../services/GoogleMaps';
 
 export default function ({ store }) {
-
   function onGoogleMapsPress() {
     GoogleMaps.search(`${store.street},${store.number} - ${store.city}`)
   }
