@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
-import ImageService from '../services/Image';
+import Image from '../services/Image';
 
-export default function ({ product, width, height, onPress }) {
+export default function ({ product, containerStyle, onPress }) {
   return (
-    <TouchableOpacity style={{ ...styles.container, width, height }}
+    <TouchableOpacity style={{ ...styles.container, ...containerStyle }}
       onPress={() => onPress(product)} disabled={!onPress}>
-      <ImageBackground source={{ uri: ImageService.getUrlFromPath(product.image) }} style={styles.image} resizeMode='contain'>
+      <ImageBackground
+        source={{ uri: Image.getUrlFromPath(product.image) }}
+        style={styles.image} resizeMode='contain'>
         <View style={styles.priceContainer}>
           <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
         </View>
@@ -20,7 +22,6 @@ export default function ({ product, width, height, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 5,
     flex: 1,
   },
   image: {
