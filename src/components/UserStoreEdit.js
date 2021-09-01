@@ -17,7 +17,7 @@ export default function ({ user, onSuccess }) {
   const { setContent } = useAlert();
 
   useEffect(() => {
-    Store.search({ name: search, city: city?._id }).then(({ data }) => setStores(data));
+    Store.search(search, city?._id).then(({ data }) => setStores(data));
   }, [search, city]);
 
   async function setUserStore(store) {
