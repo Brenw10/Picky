@@ -22,9 +22,7 @@ export default function ({ navigation }) {
         <Searchbar placeholder='Buscar Lojas' onSearch={setSearch} />
 
         <SectionSubtitle>Categorias</SectionSubtitle>
-        <CategoryList width={110} height={100}
-          onPress={category => navigation.navigate('Category', { category, city })}
-        />
+        <CategoryList onPress={category => navigation.navigate('Category', { category, city })} />
 
         <SectionTitle>LOJAS</SectionTitle>
         <StoreList city={city._id} name={search} minProducts={1}

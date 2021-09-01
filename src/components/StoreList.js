@@ -20,6 +20,7 @@ export default function ({ city, name, minProducts, onPress }) {
         horizontal={true}
         data={store.products}
         keyExtractor={item => item._id}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item }) =>
           <ProductCard product={item}
             containerStyle={styles.product}

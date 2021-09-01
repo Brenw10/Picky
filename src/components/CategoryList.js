@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard';
 import Category from '../api/Category';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
-export default function ({ onPress, width, height }) {
+export default function ({ onPress }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -15,12 +15,20 @@ export default function ({ onPress, width, height }) {
       horizontal={true}
       data={categories}
       keyExtractor={item => item._id}
+      showsHorizontalScrollIndicator={false}
       renderItem={({ item }) =>
         <CategoryCard
           category={item}
-          containerStyle={{ width, height }}
+          containerStyle={styles.category}
           onPress={category => onPress(category)} />
       }
     />
   )
 }
+
+const styles = StyleSheet.create({
+  category: {
+    width: 110,
+    height: 100,
+  },
+});
