@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Dimensions, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import SectionSubtitle from '../components/SectionSubtitle';
 import ProductCard from '../components/ProductCard';
 import Store from '../api/Store';
@@ -32,7 +32,7 @@ export default function ({ city, name, minProducts, onPress }) {
 
 const styles = StyleSheet.create({
   product: {
-    width: Dimensions.get('window').width / 2.5,
+    width: 150,
     height: 200,
   },
 });
