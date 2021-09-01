@@ -8,7 +8,7 @@ export default function ({ city, name, minProducts, onPress }) {
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    Store.search({ city, name, minProducts }).then(({ data }) => setStores(data));
+    Store.search(city, name, minProducts).then(({ data }) => setStores(data));
   }, [city, name, minProducts]);
 
   return stores.map(store =>
