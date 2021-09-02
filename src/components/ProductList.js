@@ -3,12 +3,13 @@ import { FlatList } from 'react-native';
 import ProductCard from '../components/ProductCard';
 import Product from '../api/Product';
 
-export default function ({ HeaderComponent, columns, height, storeId, city, categoryId, name, onPress }) {
+export default function (props) {
+  const { HeaderComponent, columns, height, storeId, city, categoryId, name, onPress } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     Product.search(storeId, city, name, categoryId).then(({ data }) => setProducts(data));
-  }, [storeId, city, name, categoryId]);
+  }, [props]);
 
   return (
     <FlatList
