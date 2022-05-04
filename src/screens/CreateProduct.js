@@ -9,7 +9,7 @@ import { Button } from 'react-native-elements';
 import Product from '../api/Product';
 import { useUserToken } from '../contexts/UserToken';
 import { useAlert } from '../contexts/Alert';
-import String from '../services/String';
+import CurrencyInput from '../components/CurrencyInput'
 
 export default function ({ navigation, route }) {
   const { store } = route.params;
@@ -29,7 +29,7 @@ export default function ({ navigation, route }) {
 
   async function onSubmit() {
     try {
-      await Product.create(token, store._id, { name, image, price: String.toFloat(price), category: category._id });
+      await Product.create(token, store._id, { name, image, price, category: category._id });
       setContent('Produto adicionado com sucesso');
       navigation.goBack();
     } catch (err) {
@@ -39,7 +39,7 @@ export default function ({ navigation, route }) {
   }
 
   function isValid() {
-    return name && image && price && category;
+    return name && image && price > 0 && category;
   }
 
   return (
@@ -57,10 +57,7 @@ export default function ({ navigation, route }) {
           placeholder='Nome do Produto'
           leftIcon={<FontAwesome name='shopping-basket' size={21} color='#87939e' />}
         />
-        <Input label='Valor' value={price} onChangeText={text => setPrice(text)}
-          placeholder='Valor do Produto' keyboardType='numeric'
-          leftIcon={<FontAwesome name='money' size={21} color='#87939e' />}
-        />
+        <CurrencyInput value={price} onChangeValue={setPrice} />
         <CategorySelector setCategory={setCategory} category={category} />
         <Button title='Criar Produto' buttonStyle={styles.confirmButton} disabled={!isValid()} onPress={onSubmit} />
       </ScrollView>
